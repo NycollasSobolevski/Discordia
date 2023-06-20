@@ -1,9 +1,12 @@
 <div class="content">
-    <div id="login">
+    <div id="login" [ngStyle]="{'display' : this.isLogin ? 'flex' : 'none'}">
         <app-login></app-login>
     </div>
     
-    <div id="signIn">
-        <!-- <app-new-account></app-new-account> -->
+    <div id="signIn" [ngStyle]="{'display' : !this.isLogin ? 'flex' : 'none'}">
+        <app-new-account></app-new-account>
+    </div>
+    <div>
+        <button (click)="changeToSigin()">Switch</button>
     </div>
 </div>

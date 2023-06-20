@@ -6,17 +6,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
 }
 .content{
+    border-radius: 20px;
     height: 80%;
     width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 46%, rgba(0,61,255,1) 100%);
+    box-shadow: 5px 5px 30px rgb(163, 206, 255, 30%);
+    color: aliceblue;
 }
+
 .content span{
     width: 75%;
     margin: 10px;

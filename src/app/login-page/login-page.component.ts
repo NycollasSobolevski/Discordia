@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
-
+  protected isLogin = true;
+  protected changeToSigin(){
+    this.isLogin = !this.isLogin;
+  }
 }

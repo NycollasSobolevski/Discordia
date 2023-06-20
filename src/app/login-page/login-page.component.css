@@ -9,4 +9,20 @@
   position: fixed;
   top: 50%;left: 50%;
   transform: translate(-50%, -50%);
+  /* animation: rotate 1s; */
+}
+#signIn{
+  position: fixed;
+  top: 50%;left: 50%;
+  transform: translate(-50%, -50%);
+  /* animation: rotate 1s; */
+}
+
+@keyframes rotate{
+  0%{
+    transform: rotateY(0deg);
+  }
+  100%{
+    transform: rotateY(90deg);
+  }
 }
