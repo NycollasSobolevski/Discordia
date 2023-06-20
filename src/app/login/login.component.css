@@ -1,0 +1,41 @@
+.container{
+    width: 40vw;
+    min-width: 300px;
+    height: 50vh;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+.content{
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
+.content span{
+    width: 75%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+span input{
+    height: 20px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+}
+.buttons button{
+    width: 5vw;
+    height: 3vh;
+    min-width: 75px;
+    min-height: 20px;
+    border-radius: 10px;
+    background-color: azure;
+}

@@ -6,13 +6,18 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  h2, h3{
+    text-decoration: none;
+    font-family: 'Bruno Ace SC', cursive;
+    color: aliceblue;
+  }
 
   .spacer {
     flex: 1;
   }
 
   .toolbar {
-    position: absolute;
+    position: static;
     top: 0;
     left: 0;
     right: 0;
@@ -28,20 +33,11 @@
     margin: 0 16px;
   }
 
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 8px;
-  }
-
-  .toolbar #youtube-logo {
+  .toolbar #tools {
     height: 40px;
     margin: 0 16px;
   }
 
-  .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
-  }
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link) ,
