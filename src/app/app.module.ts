@@ -9,6 +9,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginComponent } from './login/login.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { FeedPageComponent } from './feed-page/feed-page.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     LoginPageComponent,
     LoginComponent,
     NewAccountComponent,
-    HomePageComponent
+    HomePageComponent,
+    FeedPageComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
