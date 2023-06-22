@@ -11,6 +11,7 @@ import { NewAccountComponent } from './new-account/new-account.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FeedPageComponent } from './feed-page/feed-page.component';
 import { MenuComponent } from './menu/menu.component';
+import { FeedCardComponent } from './feed-card/feed-card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MenuComponent } from './menu/menu.component';
     NewAccountComponent,
     HomePageComponent,
     FeedPageComponent,
-    MenuComponent
+    MenuComponent,
+    FeedCardComponent
   ],
   imports: [
     BrowserModule,

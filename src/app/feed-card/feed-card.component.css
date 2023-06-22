@@ -1,0 +1,55 @@
+.card{
+    width: calc(60vw);
+    max-width: 700px ;
+    background-color: rgb(100, 100, 100);
+    border-radius: 20px;
+}
+#header{
+    
+}
+#person-data{
+    display: flex;
+    padding: 20px 0 0 20px;
+}
+#person-data h5{
+    margin: 10px 0 0 0;
+}
+#post-data p{
+    font-size: small;
+    color: rgb(20, 20, 20);
+    margin: 0px 0 0 0;
+}
+
+#post-content{
+    display: flex;flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#post-title{
+    margin: 0 0 0 0;
+}
+#post-content img{
+
+    max-width: 90%;
+}
+#post-text{
+    padding: 0px 36px 0px 36px;
+}
+
+#footer{
+    margin-top: 20px;
+    height: 50px;
+}
+.interactions{
+    display: flex;
+}
+.reactions h5{
+    margin: 0;
+}
+.reactions{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
