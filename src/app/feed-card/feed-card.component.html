@@ -10,6 +10,17 @@
                     </div>
                 </div>
             </div>
+            <div class="config">
+                <button class="config-button-svg" (click)="mostConfig()">
+                    <svg height="15px" width="15px"><path d="M7.5 7.5C7.5 9 6 10.5 4.5 10.5 3 10.5 1.5 9 1.5 7.5 1.5 6 3 4.5 4.5 4.5 6 4.5 7.5 6 7.5 7.5Z"/></svg>
+                    <svg height="15px" width="15px"><path d="M7.5 7.5C7.5 9 6 10.5 4.5 10.5 3 10.5 1.5 9 1.5 7.5 1.5 6 3 4.5 4.5 4.5 6 4.5 7.5 6 7.5 7.5Z"/></svg> 
+                    <svg height="15px" width="15px"><path d="M7.5 7.5C7.5 9 6 10.5 4.5 10.5 3 10.5 1.5 9 1.5 7.5 1.5 6 3 4.5 4.5 4.5 6 4.5 7.5 6 7.5 7.5Z"/></svg> 
+                </button>
+                <div class="config-content" [ngStyle]="{'display' : this.viewConfig ? 'flex' : 'none'}">
+                    <button><h4>Denunciar</h4></button>
+                    <button><h4>Silenciar</h4></button>
+                </div>
+            </div>
         </div>
         <div id="post-content">
             <h4 id="post-title">Title</h4>

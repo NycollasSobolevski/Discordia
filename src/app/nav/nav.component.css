@@ -17,16 +17,16 @@
   }
 
   .toolbar {
-    position: static;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
     height: 60px;
     display: flex;
     align-items: center;
     background-color: var(--pri-color);
-    color: white;
+    color: var(--text-color);
     font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 0 10px 10px rgb(200, 200, 200, 20%);
   }
 
   .toolbar img {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewRef } from '@angular/core';
 
 @Component({
   selector: 'app-feed-card',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./feed-card.component.css']
 })
 export class FeedCardComponent {
-
+  protected viewConfig = false;
+  protected mostConfig(){
+    this.viewConfig =  !this.viewConfig;
+  }
 }
