@@ -1,0 +1,29 @@
+<button class="new-post-icon">
+    <svg >
+        <path d="M 10 0 L 10 10 L 0 10 L 0 15 L 10 15 L 10 25 L 15 25 L 15 15 L 25 15 L 25 10 L 15 10 L 15 0 L 10 0" fill="#000"/>
+    </svg>
+</button>
+
+<div id="new-post-container">
+    <div class="content">
+        <span>
+            <input type="text"  placeholder="Title" id="Title" maxlength="50" (ngModelChange)="updateTitle($event)" [(ngModel)]="title" >
+            <h5>{{titleCount}} / 50</h5>
+        </span>
+        <span>
+            <textarea name="text" id="text" cols="30" rows="10" placeholder="Text"  (ngModelChange)="updateText($event)" maxlength="500" [(ngModel)]="text"></textarea>
+            <h5>{{textCount}} / 500</h5>
+        </span>
+        
+        <input type="file" accept="image/*" style="display: none;">
+        <div>
+            <button>
+                <svg>
+                    <path d="M 18.7279 32.1427 c -3.9247 3.8373 -10.2353 3.822 -14.1381 -0.0536 c -3.9017 -3.8734 -3.9171 -10.1411 -0.0525 -14.0385 l -0.0032 -0.0022 L 18.7301 3.9519 l 1.7754 -1.7623 c 2.9402 -2.9195 7.7062 -2.9195 10.6465 0 s 2.9402 7.6526 0 10.5732 l -15.6487 15.3775 l -0.0055 -0.0044 c -1.9285 1.8464 -5.0023 1.8333 -6.9078 -0.0493 c -1.9055 -1.8836 -1.9175 -4.9201 -0.0493 -6.8235 l -0.0055 -0.0066 l 1.7425 -1.7195 l 8.7126 -8.6054 l 1.7414 1.7217 l -10.454 10.3249 c -0.9626 0.9495 -0.9626 2.4907 0 3.4413 s 2.5235 0.9505 3.485 0 L 29.3775 10.9984 l -0.0044 -0.0032 l 0.0591 -0.0504 c 1.9603 -1.946 1.9603 -5.1029 0 -7.0488 s -5.1368 -1.946 -7.097 0 l -0.0525 0.0591 l -0.0032 -0.0022 l -1.7743 1.7611 L 6.3083 19.8106 c -2.9402 2.9195 -2.9402 7.6526 0 10.5721 s 7.7074 2.9195 10.6454 0 l 12.4219 -12.3344 l 1.7743 -1.7611 l 1.7743 1.7611 l -1.7743 1.7623 l -12.4196 12.3344 C 18.7301 32.1449 18.7279 32.1427 18.7279 32.1427 z"/>
+                </svg>
+                <h3>Image</h3>
+            </button>
+            <button>Post</button>
+        </div>
+    </div>
+</div>

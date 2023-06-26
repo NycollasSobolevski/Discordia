@@ -1,0 +1,45 @@
+.container{
+    height: calc(100vh - 60px); width: 17vw;
+    max-width: 250px;
+    background: rgb(2,0,36);
+    background: linear-gradient(135deg, var(--pri-color) 0%, var(--ter-color) 100%);
+    display: flex; flex-direction: column; 
+    position: fixed;
+    justify-content: center; align-items: center;
+}
+.content{
+    width: 93%;height: 98%;
+    background-color: rgb(0,0,0,10%);
+    border-radius: 15px;
+}
+.icon-svg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-item{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+h4{
+    margin: 0 0 0 10px;
+    color: var(--text-color01);
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    margin: 10px;
+}
+footer a{
+    color: var(--text-color01);
+}
+
+
+@media (max-width: 641px) {
+    .container{
+        display: none;
+    }
+}
