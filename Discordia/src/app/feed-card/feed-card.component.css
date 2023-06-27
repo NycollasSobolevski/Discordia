@@ -77,3 +77,24 @@
     justify-content: center;
 }
 
+@media (max-width: 641px) {
+    *{
+        font-size: small;
+    }
+    .card{
+        width: 90vw;
+    }
+    .config-button-svg svg{
+        width: 20;height: 35;
+    }
+    #post-text{
+        padding: 0px 15px 0px 15px;
+    }
+    #post-content{
+        margin-top: 15px;
+    }
+    .reactions h5{
+        display: none;
+    }
+
+}

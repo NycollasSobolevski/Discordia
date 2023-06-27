@@ -10,13 +10,15 @@ export class NewPostComponent {
   protected textCount = 0;
   protected title = '';
   protected text = '';
+  protected viewContainer = false;
 
   protected updateText(newValue : string){
     this.textCount = newValue.length ;
   }
   protected updateTitle(newValue : string) {
   this.titleCount = newValue.length ;
-} 
-  
-
+  }
+  protected view(){
+    this.viewContainer = !this.viewContainer;
+  } 
 }
