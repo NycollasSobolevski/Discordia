@@ -10,10 +10,12 @@ CREATE TABLE Person(
     birth date not null,
     email varchar(50) not null,
     photo varchar(100) not null, 
+    password varchar(100) not null,
     salt varchar(50) not null
 )
-GO
 
+
+GO
 CREATE TABLE Forum(
     id int PRIMARY KEY not  null IDENTITY(1,1),
     creator_id int not null,
@@ -25,6 +27,35 @@ CREATE TABLE Forum(
         REFERENCES Person(id)
 )
 
+
+
+GO
+CREATE TABLE Funcs(
+    id int PRIMARY KEY not  null IDENTITY(1,1),
+    name varchar(40) not null
+)
+
+
+GO
+CREATE TABLE Position(
+    id int PRIMARY KEY not  null IDENTITY(1,1),
+    name VARCHAR(20),
+    id_forum int FOREIGN KEY (id_forum) REFERENCES Forum(id)
+)
+
+GO
+CREATE TABLE Permission(
+    id int PRIMARY KEY not  null IDENTITY(1,1),
+    id_funcs int FOREIGN KEY (id_funcs) REFERENCES Funcs(id),
+    id_position int FOREIGN KEY (id_position) REFERENCES Position(id)
+)
+
+GO
+CREATE TABLE Subscribed(
+    id int PRIMARY KEY not  null IDENTITY(1,1),
+    
+)
+
 GO
 CREATE TABLE Post(
     id int PRIMARY KEY not null IDENTITY(1,1),
@@ -34,4 +65,20 @@ CREATE TABLE Post(
     attachment bit,
     id_forum int FOREIGN key (id_forum) REFERENCES Forum(id),
     id_creator int FOREIGN KEY (id_creator) REFERENCES Person(id)
+)
+
+GO
+CREATE table Likes(
+    id int PRIMARY KEY not null IDENTITY(1,1),
+    positive bit not null,
+    id_person int not null FOREIGN KEY (id_person) REFERENCES Person(id),
+    id_post int not null FOREIGN KEY (id_post) REFERENCES Post(id),
+)
+
+GO 
+CREATE table  Comments(
+    id int PRIMARY KEY not null IDENTITY(1,1),
+    comment varchar(100) not null,
+    id_person int not null FOREIGN KEY (id_person) REFERENCES Person(id),
+    id_post int not null FOREIGN KEY (id_post) REFERENCES Post(id),
 )

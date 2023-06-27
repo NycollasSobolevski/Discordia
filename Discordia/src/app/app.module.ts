@@ -14,6 +14,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FeedCardComponent } from './feed-card/feed-card.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { FormsModule } from '@angular/forms';
+import { MenuComponentComponent } from './menu-component/menu-component.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     FeedPageComponent,
     MenuComponent,
     FeedCardComponent,
-    NewPostComponent
+    NewPostComponent,
+    MenuComponentComponent
   ],
   imports: [
     BrowserModule,
