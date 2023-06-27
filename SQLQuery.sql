@@ -53,7 +53,8 @@ CREATE TABLE Permission(
 GO
 CREATE TABLE Subscribed(
     id int PRIMARY KEY not  null IDENTITY(1,1),
-    
+    id_person int FOREIGN KEY (id_person) REFERENCES Person(id),
+    id_position int FOREIGN KEY (id_position) REFERENCES Position(id)
 )
 
 GO

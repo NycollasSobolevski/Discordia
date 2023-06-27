@@ -3,34 +3,34 @@ using System.Linq.Expressions;
 
 namespace backend;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Model;
 
 public class PersonRepository : IRepository<Person>
 {
     private DiscordiaContext entity;
+
     public void add(Person obj)
     {
-        entity.Add(obj);
-        entity.SaveChanges();
+        throw new NotImplementedException();
     }
 
     public void Delete(Person obj)
     {
-        
-        entity.Remove(obj);
-        entity.SaveChanges();
+        throw new NotImplementedException();
     }
 
     public async Task<List<Person>> Filter(Expression<Func<Person, bool>> exp)
     {
         return await entity.People
-            .Where(exp)
-            .ToListAsync();
+            .Where(exp).ToListAsync();
     }
 
     public void Update(Person obj)
     {
-        entity.Update(obj);
-        entity.SaveChanges();
+        throw new NotImplementedException();
     }
 }

@@ -14,4 +14,6 @@ public partial class Position
     public virtual Forum IdForumNavigation { get; set; }
 
     public virtual ICollection<Permission> Permissions { get; set; } = new List<Permission>();
+
+    public virtual ICollection<Subscribed> Subscribeds { get; set; } = new List<Subscribed>();
 }

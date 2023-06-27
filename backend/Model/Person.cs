@@ -26,4 +26,6 @@ public partial class Person
     public virtual ICollection<Like> Likes { get; set; } = new List<Like>();
 
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+
+    public virtual ICollection<Subscribed> Subscribeds { get; set; } = new List<Subscribed>();
 }
