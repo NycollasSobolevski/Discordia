@@ -9,13 +9,15 @@ public partial class Forum
 
     public int CreatorId { get; set; }
 
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
     public DateTime? Created { get; set; }
 
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
-    public virtual Person Creator { get; set; } = null!;
+    public virtual Person Creator { get; set; }
+
+    public virtual ICollection<Position> Positions { get; set; } = new List<Position>();
 
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
 }
