@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Person, LoginData } from '../services/person';
+import { UserService } from '../services/person.service';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +10,21 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class LoginComponent {
   @Output() onSingInClicked = new EventEmitter();
 
+  constructor(private service: UserService) { }
+
+  user : LoginData = {
+    indentify : '',
+    password : ''
+  }
+
   signInClicked()
   {
     this.onSingInClicked.emit()
+  }
+
+
+  loginClicked()
+  {
+    this.service.sendUser(this.user)
   }
 }

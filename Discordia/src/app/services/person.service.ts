@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Person } from './person';
+import { LoginData, Person } from './person';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   
-  sendUser(pessoinha : Person) {
+  sendUser(pessoinha : LoginData) {
     return this.http.post('http://localhost:5283/user/login/', pessoinha)
   };
 

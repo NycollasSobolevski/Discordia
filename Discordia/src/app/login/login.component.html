@@ -2,19 +2,18 @@
   <div class="content">
     <h2>LOGIN</h2>
     <div>
-
-        <span>
-            <label for="email">Email</label>
-            <input id="email" type="email" />
-        </span>
-        <span>
-            <label for="password">Password</label>
-            <input id="password" type="password" />
-        </span>
-        <div class="buttons">
-            <a href="feed"><button>Login</button></a> 
-            <button (click)="signInClicked()">Sign In</button>
-        </div >
+      <span>
+          <label for="email">Email / Nome</label>
+          <input [(ngModel)]="user.indentify" id="email" type="email" />
+      </span>
+      <span>
+          <label for="password">Password</label>
+          <input [(ngModel)]="user.password" id="password" type="password" />
+      </span>
+      <div class="buttons">
+          <button>Login</button>
+          <button (click)="signInClicked()">Sign In</button>
+      </div >
     </div>
   </div>
 </div>

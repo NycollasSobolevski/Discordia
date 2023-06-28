@@ -33,15 +33,18 @@ export class NewAccountComponent {
   }
 
   checkPassword() {
+    console.log(this.user.password === this.rePassword);
+    
     return this.user.password === this.rePassword
   }
 
-  validatePassword(){
-    if(this.checkPassword())
+  validatePassword(newValue : string){
+    this.rePassword = newValue
+    if(!this.checkPassword())
     {
       this.alertDiv = true;
       this.alertContent = 'Passwords are different'
-      this.alertLevel = 2
+      this.alertLevel = 1
     }
   }
 
@@ -52,6 +55,8 @@ export class NewAccountComponent {
       this.alertDiv = true;
       this.alertContent = 'Passwords are different'
       this.alertLevel = 2
+      console.log(this.alertLevel);
+      
       return
     }
 

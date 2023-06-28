@@ -1,4 +1,4 @@
-export interface Person {
+interface Person {
     id: number;
     name: string;
     birth: Date;
@@ -7,3 +7,12 @@ export interface Person {
     password: string;
     salt: string;
 }
+
+interface LoginData
+{
+    indentify: string,
+    password: string
+}
+
+
+export {Person, LoginData}

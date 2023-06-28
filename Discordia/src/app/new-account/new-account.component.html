@@ -3,7 +3,6 @@
     <h2>Create Account</h2>
     <div>
       <span id="image-input">
-        <label for="profile-photo">Profile Photo</label>
         <button>
           <img src="../../assets/images/person-standard-logo.png" width="100" alt="Image Preview">
         </button>
@@ -19,11 +18,11 @@
       </span>
       <span>
         <label for="pass">Password</label>
-        <input [(ngModel)]="user.password" (change)="validatePassword()" id="pass" type="password" placeholder="********" />
+        <input [(ngModel)]="user.password"  id="pass" type="password" placeholder="********" />
       </span>
       <span>
         <label for="re-pass">Confirm Password</label>
-        <input [(ngModel)]="rePassword" id="re-pass" type="password" placeholder="********" />
+        <input [(ngModel)]="rePassword" (ngModelChange)="validatePassword($event)" id="re-pass" type="password" placeholder="********" />
       </span>
       <span>
         <label for="birth">Birthday</label>
@@ -39,7 +38,7 @@
         'background-color':'var(--alert-color' + alertLevel + ')',
         'display': alertDiv ? 'flex' : 'none'
       }">
-      <h3>{{ alertContent }}</h3>
+      <p>{{ alertContent }}</p>
     </div>
   </div>
 </div>
