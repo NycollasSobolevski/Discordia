@@ -694,6 +694,15 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
+      "secJson-jwt/0.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Security-jwt.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Security-jwt.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "type": "package",
         "dependencies": {
@@ -2435,6 +2444,18 @@
         "mono.texttemplating.nuspec"
       ]
     },
+    "secJson-jwt/0.1.0": {
+      "sha512": "RA3i07hqJJw8jXnO1K9yTTuYMOsu5MNyCMS6+BfWfJX2Cs5HrXv3SBl/QUoD5uPGu8ZmIyJKSYKvc32W++VNdQ==",
+      "type": "package",
+      "path": "secjson-jwt/0.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net7.0/Security-jwt.dll",
+        "secjson-jwt.0.1.0.nupkg.sha512",
+        "secjson-jwt.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.4.0": {
       "sha512": "eUBr4TW0up6oKDA5Xwkul289uqSMgY0xGN4pnbOIBqCcN9VKGGaPvHX3vWaG/hvocfGDP+MGzMA0bBBKz2fkmQ==",
       "type": "package",
@@ -3869,7 +3890,8 @@
       "Microsoft.AspNetCore.OpenApi >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.8",
-      "Swashbuckle.AspNetCore >= 6.4.0"
+      "Swashbuckle.AspNetCore >= 6.4.0",
+      "secJson-jwt >= 0.1.0"
     ]
   },
   "packageFolders": {
@@ -3929,6 +3951,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.4.0, )"
+          },
+          "secJson-jwt": {
+            "target": "Package",
+            "version": "[0.1.0, )"
           }
         },
         "imports": [

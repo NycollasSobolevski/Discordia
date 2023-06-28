@@ -1,5 +1,6 @@
 using backend;
 using backend.Model;
+using Security_jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +21,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddTransient<IJwtService>(p =>
+    new JwTService(new PasswordProvider("sla"))
+);
+
 builder.Services.AddScoped<DiscordiaContext>();
-builder.Services.AddSingleton<IRepository<Person>,FakeUserRepo>();
+//TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+builder.Services.AddSingleton<IRepository<Person>, FakeUserRepo>();
 
 
 var app = builder.Build();

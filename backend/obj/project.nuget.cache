@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "tsO000pF4xseixpNoOdAnopk6tvseRWDqATjNCHaJ3mzMl6dvc2yKNrY5mJm32kSnKKOwuAPsmHhoamyFYtDJQ==",
+  "dgSpecHash": "rPqJMbjuAfgOQHOs5NYaXltG59si0bjpNLsnEk7aN5abg0ojwDwTANCpSNTGsgL86obZXKmjqhkfNxzZ1FCMcQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\disrct\\Desktop\\Projeto Discordia\\backend\\backend.csproj",
   "expectedPackageFiles": [
@@ -44,6 +44,7 @@
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\secjson-jwt\\0.1.0\\secjson-jwt.0.1.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",

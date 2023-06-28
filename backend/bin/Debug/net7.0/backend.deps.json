@@ -11,7 +11,8 @@
           "Microsoft.AspNetCore.OpenApi": "7.0.5",
           "Microsoft.EntityFrameworkCore.Design": "7.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.8",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "secJson-jwt": "0.1.0"
         },
         "runtime": {
           "backend.dll": {}
@@ -401,6 +402,14 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.1.1"
+          }
+        }
+      },
+      "secJson-jwt/0.1.0": {
+        "runtime": {
+          "lib/net7.0/Security-jwt.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -954,6 +963,13 @@
       "sha512": "sha512-KZYeKBET/2Z0gY1WlTAK7+RHTl7GSbtvTLDXEZZojUdAPqpQNDL6tHv7VUpqfX5VEOh+uRGKaZXkuD253nEOBQ==",
       "path": "mono.texttemplating/2.2.1",
       "hashPath": "mono.texttemplating.2.2.1.nupkg.sha512"
+    },
+    "secJson-jwt/0.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RA3i07hqJJw8jXnO1K9yTTuYMOsu5MNyCMS6+BfWfJX2Cs5HrXv3SBl/QUoD5uPGu8ZmIyJKSYKvc32W++VNdQ==",
+      "path": "secjson-jwt/0.1.0",
+      "hashPath": "secjson-jwt.0.1.0.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.4.0": {
       "type": "package",
