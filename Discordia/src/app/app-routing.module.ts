@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedPageComponent } from './feed-page/feed-page.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const routes: Routes = [
   {path: "", title:"Discordia - Home", component: HomePageComponent},
@@ -12,7 +14,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    HttpClientModule
+  ],
+  
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -11,28 +11,35 @@
       </span>
       <span>
         <label for="name">Name</label>
-        <input id="name" type="text" placeholder="Example Name" />
+        <input [(ngModel)]="user.name" id="name" type="text" placeholder="Example Name" />
       </span>
       <span>
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="example@domain.com" />
+        <input [(ngModel)]="user.email" id="email" type="email" placeholder="example@domain.com" />
       </span>
       <span>
         <label for="pass">Password</label>
-        <input id="pass" type="password" placeholder="********" />
+        <input [(ngModel)]="user.password" (change)="validatePassword()" id="pass" type="password" placeholder="********" />
       </span>
       <span>
         <label for="re-pass">Confirm Password</label>
-        <input id="re-pass" type="password" placeholder="********" />
+        <input [(ngModel)]="rePassword" id="re-pass" type="password" placeholder="********" />
       </span>
       <span>
         <label for="birth">Birthday</label>
-        <input id="birth" type="date" placeholder="dd/mm/yyyy" />
+        <input [(ngModel)]="user.birth" id="birth" type="date" placeholder="dd/mm/yyyy" />
       </span>
       <div class="buttons">
         <button (click)="loginClicked()">Login</button>
-        <button >Sign In</button>
+        <button (click)="signInClicked()">Sign In</button>
       </div>
+    </div>
+    <div id="alert" 
+      [ngStyle]="{
+        'background-color':'var(--alert-color' + alertLevel + ')',
+        'display': alertDiv ? 'flex' : 'none'
+      }">
+      <h3>{{ alertContent }}</h3>
     </div>
   </div>
 </div>

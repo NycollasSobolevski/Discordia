@@ -1,9 +1,9 @@
 <div class="content">
-    <div id="login" [ngStyle]="{'display' : this.isLogin ? 'flex' : 'none'}">
+    <div id="login" [ngStyle]="{'display' : !this.isLogin ? 'flex' : 'none'}">
         <app-login (onSingInClicked)="changeToSigin()"></app-login>
     </div>
     
-    <div id="signIn" [ngStyle]="{'display' : !this.isLogin ? 'flex' : 'none'}">
+    <div id="signIn" [ngStyle]="{'display' : this.isLogin ? 'flex' : 'none'}">
         <app-new-account (OnLoginClicked)="changeToSigin()"></app-new-account>
     </div>
 </div>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+#pragma warning disable
 
 namespace backend.Model;
 

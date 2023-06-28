@@ -55,3 +55,11 @@ span input{
     border-radius: 10px;
     background-color: azure;
 }
+
+
+#alert{
+    width: 30%;
+    height: 7%;
+    position: relative;
+    border-radius: 15px;
+}
