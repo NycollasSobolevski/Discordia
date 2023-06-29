@@ -15,18 +15,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgb(2,0,36);
-    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 46%, rgba(0,61,255,1) 100%);
-    box-shadow: 5px 5px 30px rgb(163, 206, 255, 30%);
+    background: rgb(2,0,36,5%);
+    backdrop-filter: blur(50px);
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
     color: aliceblue;
 }
 
+
 .content span{
-    width: 75%;
+    width: 93%;
     margin: 10px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid var(--pri-color)
+
 }
 #image-input
     input{
@@ -34,12 +37,51 @@
     }
     img{
         max-height: 150px;
+        background-color: rgb(155, 155, 155);
+        border-radius: 50%;
     }
+#image-input{
+    width: 93%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
     
 
 span input{
-    height: 30px;
-    /* TODOOOOOOOOOOOOOOOOOOOOOOOOO */
+    height: 30px;width: 250px;
+    background: transparent;
+    border: 0;
+    padding-left: 5px;
+    color: var(--text-color01);
+}
+span input:active, span input:focus, span input:hover{
+    outline: none;
+    border-bottom-color: var(--sec-color) ;
+    
+}
+span input::placeholder{
+    color: var(--placeholder-color01);
+}
+span svg{
+    width: 20px;
+    height: 20px;
+    border: 10px;
+}
+span svg path{
+    fill: black;
+}
+.password-view-buttom{
+    position: relative;
+    right: 0;
+}
+span div{
+    height: 32px;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: centerS;
 }
 .buttons{
     display: flex;

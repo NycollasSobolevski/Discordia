@@ -22,6 +22,7 @@ export class NewAccountComponent {
   protected alertDiv = false;
   protected alertLevel = 1;
 
+
   user : Person = {
     id : 0,
     name : '',
@@ -46,16 +47,31 @@ export class NewAccountComponent {
       this.alertContent = 'Passwords are different'
       this.alertLevel = 1
     }
+    else{
+      this.alertDiv = false;
+    }
+  }
+
+  checkData(){
+    if(this.user.birth != new Date &&
+        this.user.email != '' &&
+        this.user.name != '')
+          return true;
+    return false
   }
 
   signInClicked(){
     console.log(this.user + 'OKAY');
-
+    if(!this.checkData()){
+      this.alertDiv = true;
+      this.alertContent = 'inconsistent data'
+      this.alertLevel = 2
+      return
+    }
     if (!this.checkPassword()) {
       this.alertDiv = true;
       this.alertContent = 'Passwords are different'
       this.alertLevel = 2
-      console.log(this.alertLevel);
       
       return
     }
@@ -63,7 +79,8 @@ export class NewAccountComponent {
     this.service.registerUser(this.user).subscribe(
       res => console.log(res)
     );
-    this.router.navigate(['/login-page'])
+    
+    location.reload()
   }
 
   

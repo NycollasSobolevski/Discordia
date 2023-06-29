@@ -9,23 +9,23 @@
         <input type="file" id="profile-photo" accept="image/*">
       </span>
       <span>
-        <label for="name">Name</label>
+        <svg viewBox="0 0 24 24"><path d="M4 22C4 17.5817 7.58172 14 12 14C16.4183 14 20 17.5817 20 22H4ZM12 13C8.685 13 6 10.315 6 7C6 3.685 8.685 1 12 1C15.315 1 18 3.685 18 7C18 10.315 15.315 13 12 13Z"></path></svg>
         <input [(ngModel)]="user.name" id="name" type="text" placeholder="Example Name" />
       </span>
       <span>
-        <label for="email">Email</label>
+        <svg  viewBox="0 0 24 24"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z"></path></svg>
         <input [(ngModel)]="user.email" id="email" type="email" placeholder="example@domain.com" />
       </span>
       <span>
-        <label for="pass">Password</label>
-        <input [(ngModel)]="user.password"  id="pass" type="password" placeholder="********" />
-      </span>
+          <svg  viewBox="0 0 24 24"><path d="M19 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9V10ZM17 10V9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9V10H17ZM11 14V18H13V14H11Z"></path></svg>
+          <input [(ngModel)]="user.password"  id="pass" type="password" placeholder="********" />
+        </span>
       <span>
-        <label for="re-pass">Confirm Password</label>
-        <input [(ngModel)]="rePassword" (ngModelChange)="validatePassword($event)" id="re-pass" type="password" placeholder="********" />
-      </span>
+        <svg  viewBox="0 0 24 24"><path d="M19 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9V10ZM17 10V9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9V10H17ZM11 14V18H13V14H11Z"></path></svg>
+        <input [(ngModel)]="rePassword" (ngModelChange)="validatePassword($event)"type="password" id="re-pass"  placeholder="********" />
+        </span>
       <span>
-        <label for="birth">Birthday</label>
+        <svg  viewBox="0 0 24 24"><path d="M17 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9V3H15V1H17V3ZM4 9V19H20V9H4ZM6 13H11V17H6V13Z"></path></svg>
         <input [(ngModel)]="user.birth" id="birth" type="date" placeholder="dd/mm/yyyy" />
       </span>
       <div class="buttons">
