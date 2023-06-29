@@ -1,8 +1,11 @@
-<button class="new-post-icon" (click)="view()">
+<button class="new-post-icon"
+    (click)="view()"
+    [ngStyle]="{'rotate' : !viewContainer? '0deg': '45deg'}"    >
     <svg >
         <path d="M 10 0 L 10 10 L 0 10 L 0 15 L 10 15 L 10 25 L 15 25 L 15 15 L 25 15 L 25 10 L 15 10 L 15 0 L 10 0" fill="#000"/>
     </svg>
 </button>
+
 <div id="bg" (click)="view()"  [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }"></div>
 <div id="new-post-container" [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }">
     <div class="content">

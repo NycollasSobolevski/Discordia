@@ -6,8 +6,9 @@
     border-radius: 50%;
     z-index: 100;
     background-color: aliceblue;
-
     position: fixed; bottom: 15px; right: 15px;
+    
+    /* animation: 1s normal 1s  rotateButton; */
 }
 .new-post-icon svg{
     height:25px;
@@ -77,5 +78,15 @@ h5{
     }
     .content span{
         width: 80%;
+    }
+}
+
+
+@keyframes rotateButton{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(45deg);
     }
 }

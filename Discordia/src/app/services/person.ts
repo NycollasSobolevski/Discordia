@@ -14,5 +14,11 @@ interface LoginData
     password: string
 }
 
+interface Jwt 
+{
+    value?: string,
+}
 
-export {Person, LoginData}
+
+
+export {Person, LoginData, Jwt}

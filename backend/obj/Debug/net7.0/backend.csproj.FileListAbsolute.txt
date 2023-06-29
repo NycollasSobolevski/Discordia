@@ -75,3 +75,4 @@ C:\Users\disrct\Desktop\Projeto Discordia\backend\obj\Debug\net7.0\backend.pdb
 C:\Users\disrct\Desktop\Projeto Discordia\backend\obj\Debug\net7.0\backend.genruntimeconfig.cache
 C:\Users\disrct\Desktop\Projeto Discordia\backend\obj\Debug\net7.0\ref\backend.dll
 C:\Users\disrct\Desktop\Projeto Discordia\backend\bin\Debug\net7.0\Security-jwt.dll
+C:\Users\disrct\Desktop\Projeto Discordia\backend\bin\Debug\net7.0\Newtonsoft.Json.dll

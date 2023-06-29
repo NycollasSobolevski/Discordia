@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Forum } from '../services/Forum'
+import { Jwt } from '../services/person';
 
 @Component({
   selector: 'app-new-post',
@@ -12,6 +14,14 @@ export class NewPostComponent {
   protected text = '';
   protected viewContainer = false;
 
+  
+
+  protected forum : Forum = {
+    CreatorId : sessionStorage.getItem('jwt') ?? "",
+    Title : this.title,
+    Description : this.text
+  }
+
   protected updateText(newValue : string){
     this.textCount = newValue.length ;
   }
@@ -21,4 +31,10 @@ export class NewPostComponent {
   protected view(){
     this.viewContainer = !this.viewContainer;
   } 
+
+
+
+  createForum(){
+    
+  }
 }

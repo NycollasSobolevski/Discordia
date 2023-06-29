@@ -15,10 +15,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgb(2,0,36,5%);
+    background: rgb(2,0,36,15%);
     backdrop-filter: blur(50px);
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
-    color: aliceblue;
+    color: var(--text-color01);
 }
 
 
@@ -93,7 +93,7 @@ span div{
     min-width: 75px;
     min-height: 20px;
     border-radius: 10px;
-    background-color: azure;
+    background-color: rgba(240, 255, 255, 0.623);
 }
 
 
