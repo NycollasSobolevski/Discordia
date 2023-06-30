@@ -50,13 +50,28 @@ public class personController : ControllerBase
     }
 
     [HttpPost("addUser")]
-    public ActionResult batatinha([FromBody] Person login)
+    public ActionResult UserRegister([FromBody] Person login)
     {
         if (!ModelState.IsValid)
             return BadRequest();
 
+        Person? peopleIfExists = this.context.People
+            .FirstOrDefault(person => person.Name == login.Name || person.Email == login.Email);
+
+        if (peopleIfExists != null)
+        {
+            if (peopleIfExists.Name == login.Name)
+                return BadRequest("this username already exists");
+            if (peopleIfExists.Email == login.Email)
+                return BadRequest("This email already exists");
+        
+        }
+
+
         login.Salt = PasswordConfig.GenerateStringSalt(12);
         login.Password = PasswordConfig.GetHash(login.Password, login.Salt);
+
+
 
         this.context.People.Add(login);
         this.context.SaveChanges();

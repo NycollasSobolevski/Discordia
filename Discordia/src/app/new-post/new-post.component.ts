@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+
 import { Forum } from '../services/Forum'
 import { Jwt } from '../services/person';
 
@@ -35,6 +36,6 @@ export class NewPostComponent {
 
 
   createForum(){
-    
+
   }
 }

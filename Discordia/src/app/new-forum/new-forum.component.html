@@ -1,0 +1,21 @@
+<div class="new-forum-icon">
+    <button (click)="view()"><h4>New Forum</h4></button>
+</div>
+
+<div id="bg" (click)="view()"   [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }"></div>
+<div id="new-forum-container" [ngStyle]="{'display' : viewContainer? 'flex' : 'none'}">
+    <div class="content">
+        <h3>New Forum</h3>
+        
+        <!-- TODO: drop box com os forums disponiveis -->
+        <span>
+            <input type="text" placeholder="Title" id="Title" maxlength="50" [(ngModel)]="title"  (ngModelChange)="updateTitle($event)">
+            <p>{{titleCount}} / 50</p>
+        </span>
+        <span>
+            <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" [(ngModel)]="text" (ngModelChange)="updateText($event)"></textarea>
+            <p>{{textCount}} / 100</p>
+        </span>
+        
+    </div>
+</div>
