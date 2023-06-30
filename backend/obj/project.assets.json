@@ -707,7 +707,7 @@
           }
         }
       },
-      "secJson-jwt/0.1.0": {
+      "secJson-jwt/0.1.1": {
         "type": "package",
         "compile": {
           "lib/net7.0/Security-jwt.dll": {}
@@ -2487,15 +2487,15 @@
         "packageIcon.png"
       ]
     },
-    "secJson-jwt/0.1.0": {
-      "sha512": "RA3i07hqJJw8jXnO1K9yTTuYMOsu5MNyCMS6+BfWfJX2Cs5HrXv3SBl/QUoD5uPGu8ZmIyJKSYKvc32W++VNdQ==",
+    "secJson-jwt/0.1.1": {
+      "sha512": "Jjzs1YCboOwzq1bdpl8oUShcszVjFmbMxtFXUBBkPgVs0rlayqcWkdXut4cM2Afe3YWW/rTmBNjvaKc8Ru82aA==",
       "type": "package",
-      "path": "secjson-jwt/0.1.0",
+      "path": "secjson-jwt/0.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/net7.0/Security-jwt.dll",
-        "secjson-jwt.0.1.0.nupkg.sha512",
+        "secjson-jwt.0.1.1.nupkg.sha512",
         "secjson-jwt.nuspec"
       ]
     },
@@ -3935,7 +3935,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.8",
       "Newtonsoft.Json >= 13.0.3",
       "Swashbuckle.AspNetCore >= 6.4.0",
-      "secJson-jwt >= 0.1.0"
+      "secJson-jwt >= 0.1.1"
     ]
   },
   "packageFolders": {
@@ -4002,7 +4002,7 @@
           },
           "secJson-jwt": {
             "target": "Package",
-            "version": "[0.1.0, )"
+            "version": "[0.1.1, )"
           }
         },
         "imports": [

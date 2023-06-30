@@ -13,7 +13,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.8",
           "Newtonsoft.Json": "13.0.3",
           "Swashbuckle.AspNetCore": "6.4.0",
-          "secJson-jwt": "0.1.0"
+          "secJson-jwt": "0.1.1"
         },
         "runtime": {
           "backend.dll": {}
@@ -414,7 +414,7 @@
           }
         }
       },
-      "secJson-jwt/0.1.0": {
+      "secJson-jwt/0.1.1": {
         "runtime": {
           "lib/net7.0/Security-jwt.dll": {
             "assemblyVersion": "1.0.0.0",
@@ -980,12 +980,12 @@
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
-    "secJson-jwt/0.1.0": {
+    "secJson-jwt/0.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RA3i07hqJJw8jXnO1K9yTTuYMOsu5MNyCMS6+BfWfJX2Cs5HrXv3SBl/QUoD5uPGu8ZmIyJKSYKvc32W++VNdQ==",
-      "path": "secjson-jwt/0.1.0",
-      "hashPath": "secjson-jwt.0.1.0.nupkg.sha512"
+      "sha512": "sha512-Jjzs1YCboOwzq1bdpl8oUShcszVjFmbMxtFXUBBkPgVs0rlayqcWkdXut4cM2Afe3YWW/rTmBNjvaKc8Ru82aA==",
+      "path": "secjson-jwt/0.1.1",
+      "hashPath": "secjson-jwt.0.1.1.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.4.0": {
       "type": "package",

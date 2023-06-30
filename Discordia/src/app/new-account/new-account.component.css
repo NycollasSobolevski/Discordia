@@ -15,10 +15,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgb(2,0,36,5%);
+    background: rgb(2,0,36,15%);
     backdrop-filter: blur(50px);
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
-    color: aliceblue;
+    color: var(--text-color01);
 }
 
 
@@ -107,6 +107,7 @@ span div{
     overflow: hidden;
 }
 #alert p{
+    text-shadow: 0 0 10px rgb(0, 0, 0);
     font-size: small;
 }
 

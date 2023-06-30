@@ -1,4 +1,4 @@
-public interface ForumData
+public record ForumData
 {
 
     public string  CreatorIdJwt { get; set; }

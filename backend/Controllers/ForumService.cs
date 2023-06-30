@@ -34,6 +34,9 @@ public class ForumController : ControllerBase
         [FromServices]IJwtService jwtService
         )
     {
+
+        System.Console.WriteLine(forum);
+
         var result = jwtService.Validate<ReturnLoginData>(forum.CreatorIdJwt);
 
         var id = result.IdPerson;
@@ -44,6 +47,8 @@ public class ForumController : ControllerBase
             Description = forum.Description,
             Created = DateTime.Now
         };
+
+        System.Console.WriteLine(newForum.CreatorId + newForum.Title);
 
         this.context.Forums.Add(newForum);
         this.context.SaveChanges();

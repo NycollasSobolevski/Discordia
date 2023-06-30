@@ -107,8 +107,6 @@ export class NewAccountComponent {
 
         }
     })
-    
-    // location.reload()
   }
 
   
