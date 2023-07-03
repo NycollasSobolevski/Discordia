@@ -21,6 +21,9 @@ public class ForumRepository : IRepository<Forum>
             .Where(exp)
             .ToListAsync();
     }
+    public async Task<Forum> FirstOrDefault(Expression<Func<Forum, bool>> exp)
+        => await entity.Forums.FirstOrDefaultAsync(exp);
+
     
     public void add(Forum obj)
     {
@@ -36,8 +39,9 @@ public class ForumRepository : IRepository<Forum>
     
 
     public void Update(Forum obj)
-    {
-        entity.Update(obj);
-        entity.SaveChanges();
-    }
+        => entity.Update(obj);
+
+    public async Task<Forum> Last(Forum obj)
+        => await entity.Forums.LastOrDefaultAsync( forum => forum.Title == obj.Title);
+    
 }

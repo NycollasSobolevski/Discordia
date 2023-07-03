@@ -28,6 +28,16 @@ public class PostRepository : IRepository<Post>
             .ToListAsync();
     }
 
+    public Task<Post> FirstOrDefault(Expression<Func<Post, bool>> exp)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Post> Last(Post obj)
+    {
+        throw new NotImplementedException();
+    }
+
     public void Update(Post obj)
     {
         entity.Update(obj);

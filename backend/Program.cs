@@ -25,9 +25,13 @@ builder.Services.AddTransient<IJwtService>(p =>
     new JwTService(new PasswordProvider("sla"))
 );
 
+builder.Services.AddTransient<IRepository<Forum>, ForumRepository>();
+builder.Services.AddTransient<IRepository<Position>, PositionRepo>();
+builder.Services.AddTransient<IRepository<Subscribed>, SubscribedRepository>();
+
 builder.Services.AddScoped<DiscordiaContext>();
 //TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-builder.Services.AddSingleton<IRepository<Person>, FakeUserRepo>();
+// builder.Services.AddSingleton<IRepository<Person>, FakeUserRepo>();
 
 
 var app = builder.Build();

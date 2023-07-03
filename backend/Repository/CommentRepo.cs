@@ -29,9 +29,19 @@ public class CommentRepository : IRepository<Comment>
             .ToListAsync();
     }
 
+    public Task<Comment> FirstOrDefault(Expression<Func<Comment, bool>> exp)
+    {
+        throw new NotImplementedException();
+    }
+
     public void Update(Comment obj)
     {
         entity.Update(obj);
         entity.SaveChanges();
+    }
+
+    Task<Comment> IRepository<Comment>.Last(Comment obj)
+    {
+        throw new NotImplementedException();
     }
 }

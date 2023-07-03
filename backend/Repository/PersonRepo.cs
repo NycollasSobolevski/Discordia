@@ -29,6 +29,16 @@ public class PersonRepository : IRepository<Person>
             .Where(exp).ToListAsync();
     }
 
+    public Task<Person> FirstOrDefault(Expression<Func<Person, bool>> exp)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Person> Last(Person obj)
+    {
+        throw new NotImplementedException();
+    }
+
     public void Update(Person obj)
     {
         throw new NotImplementedException();
