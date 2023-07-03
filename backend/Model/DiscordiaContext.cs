@@ -250,5 +250,10 @@ public partial class DiscordiaContext : DbContext
         OnModelCreatingPartial(modelBuilder);
     }
 
+    internal void UpdateAsync(Comment obj)
+    {
+        throw new NotImplementedException();
+    }
+
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -57,7 +57,7 @@ public class ForumController : ControllerBase
         )
     {
 
-        var result = jwtService.Validate<ReturnLoginData>(forum.CreatorIdJwt);
+        var result = jwtService.Validate<ReturnLoginData>( forum.CreatorIdJwt );
         var id = result.IdPerson;
 
         Forum newForum = new Forum{
@@ -67,21 +67,9 @@ public class ForumController : ControllerBase
             Created = DateTime.Now
         };
 
-        forumRepo.add(newForum);
+        await forumRepo.add( newForum );
 
-        var lastForum = await forumRepo.Last(newForum);
-        try {
-            this.newPositionAsForumCreated(lastForum, positionRepo);
-        } catch {
-            return BadRequest("Create Position Error!");
-        }
-
-        try{
-            this.addSubscribedInAdmin(id, lastForum, subRepo,positionRepo );
-        } catch {
-            return BadRequest("Add admin error");
-        }
-        
+        var lastForum = await forumRepo.Last( newForum );
         return Ok();
     }
 
@@ -94,40 +82,5 @@ public class ForumController : ControllerBase
 
 
 
-    private void addSubscribedInAdmin(
-        int id, Forum forum,
-        [FromServices]IRepository<Subscribed> subRepo,
-        [FromServices]IRepository<Position> positionRepo
-        )
-    {
-        var adminPosition = positionRepo.FirstOrDefault(position =>
-            position.IdForum == forum.Id &&
-            position.Name == "Admin" ) ;
-        
-        Subscribed newSub = new Subscribed{
-            Id = forum.Id,
-            IdPerson = id,
-            IdPosition = adminPosition.Id
-        };
-
-        subRepo.add(newSub);
-    }
-
-    private void newPositionAsForumCreated(
-        Forum forum,
-        [FromServices]IRepository<Position> positionRepo
-        )
-    {
-        Position newAdmin = new Position{
-            IdForum = forum.Id,
-            Name = "Admin"
-        };
-        positionRepo.add(newAdmin);
-        Position newUser = new Position{
-            IdForum = forum.Id,
-            Name = "User"
-        };
-        positionRepo.add(newUser);
-    }
 }
 

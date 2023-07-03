@@ -8,10 +8,10 @@ using Model;
 public class PostRepository : IRepository<Post>
 {
     private DiscordiaContext entity;
-    public void add(Post obj)
+    public async Task add(Post obj)
     {
-        entity.Add(obj);
-        entity.SaveChanges();
+        await entity.AddAsync(obj);
+        await entity.SaveChangesAsync();
     }
 
     public void Delete(Post obj)
@@ -19,6 +19,11 @@ public class PostRepository : IRepository<Post>
         
         entity.Remove(obj);
         entity.SaveChanges();
+    }
+
+    public bool exists(Post obj)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<List<Post>> Filter(Expression<Func<Post, bool>> exp)

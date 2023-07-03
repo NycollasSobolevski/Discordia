@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend;
 
-public class PositionRepo : IRepository<Position>
+public class PositionRepository : IRepository<Position>
 {
     private DiscordiaContext entity;
-    public PositionRepo(DiscordiaContext service) 
+    public PositionRepository(DiscordiaContext service) 
         => this.entity = service;
 
-    public void add(Position obj)
+    public async Task add(Position obj)
     {
-        entity.Add(obj);
-        entity.SaveChanges();
+        await entity.AddAsync(obj);
+        await entity.SaveChangesAsync();
     }
 
     public void Delete(Position obj)
@@ -38,7 +38,10 @@ public class PositionRepo : IRepository<Position>
     public async Task<Position> Last(Position obj)
         => await entity.Positions.LastOrDefaultAsync( position => position.Name == obj.Name);
 
-    public Task<Position> FirstOrDefault(Expression<Func<Position, bool>> exp)
+    public async Task<Position> FirstOrDefault(Expression<Func<Position, bool>> exp)
+        => await entity.Positions.FirstOrDefaultAsync(exp);
+
+    public bool exists(Position obj)
     {
         throw new NotImplementedException();
     }

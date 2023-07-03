@@ -12,13 +12,21 @@ using Model;
 public class PersonRepository : IRepository<Person>
 {
     private DiscordiaContext entity;
+    public PersonRepository(DiscordiaContext entity)
+        => this.entity = entity;
 
-    public void add(Person obj)
+
+    public async Task add(Person obj)
     {
-        throw new NotImplementedException();
+        await this.entity.People.AddAsync(obj);
+        await this.entity.SaveChangesAsync();
     }
 
     public void Delete(Person obj)
+    {
+        throw new NotImplementedException();
+    }
+    public void Update(Person obj)
     {
         throw new NotImplementedException();
     }
@@ -39,7 +47,7 @@ public class PersonRepository : IRepository<Person>
         throw new NotImplementedException();
     }
 
-    public void Update(Person obj)
+    public bool exists(Person obj)
     {
         throw new NotImplementedException();
     }

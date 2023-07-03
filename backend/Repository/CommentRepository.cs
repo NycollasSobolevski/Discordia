@@ -9,17 +9,15 @@ using Model;
 public class CommentRepository : IRepository<Comment>
 {
     private DiscordiaContext entity;
-    public void add(Comment obj)
-    {
-        entity.Add(obj);
-        entity.SaveChanges();
-    }
+    public async Task add(Comment obj)
+        => await entity.Comments.AddAsync(obj);
 
     public void Delete(Comment obj)
+        => entity.Comments.Remove(obj);
+
+    public bool exists(Comment obj)
     {
-        
-        entity.Remove(obj);
-        entity.SaveChanges();
+        throw new NotImplementedException();
     }
 
     public async Task<List<Comment>> Filter(Expression<Func<Comment, bool>> exp)
@@ -35,10 +33,7 @@ public class CommentRepository : IRepository<Comment>
     }
 
     public void Update(Comment obj)
-    {
-        entity.Update(obj);
-        entity.SaveChanges();
-    }
+        => entity.Comments.Update(obj);
 
     Task<Comment> IRepository<Comment>.Last(Comment obj)
     {

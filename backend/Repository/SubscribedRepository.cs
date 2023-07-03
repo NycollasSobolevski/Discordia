@@ -8,34 +8,22 @@ using Model;
 public class SubscribedRepository : IRepository<Subscribed>
 {
     private DiscordiaContext entity;
-    public void add(Comment obj)
+    public async Task add(Subscribed obj)
     {
-        entity.Add(obj);
-        entity.SaveChanges();
-    }
+        await entity.Subscribeds.AddAsync(obj);
+        await entity.SaveChangesAsync();
 
-    public void add(Subscribed obj)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Delete(Comment obj)
-    {
-        
-        entity.Remove(obj);
-        entity.SaveChanges();
     }
 
     public void Delete(Subscribed obj)
     {
-        throw new NotImplementedException();
+        entity.Remove(obj);
+        entity.SaveChanges();
     }
 
-    public async Task<List<Comment>> Filter(Expression<Func<Comment, bool>> exp)
+    public bool exists(Subscribed obj)
     {
-        return await entity.Comments
-            .Where(exp)
-            .ToListAsync();
+        throw new NotImplementedException();
     }
 
     public Task<List<Subscribed>> Filter(Expression<Func<Subscribed, bool>> exp)
@@ -53,14 +41,9 @@ public class SubscribedRepository : IRepository<Subscribed>
         throw new NotImplementedException();
     }
 
-    public void Update(Comment obj)
+    public void Update(Subscribed obj)
     {
         entity.Update(obj);
         entity.SaveChanges();
-    }
-
-    public void Update(Subscribed obj)
-    {
-        throw new NotImplementedException();
     }
 }
