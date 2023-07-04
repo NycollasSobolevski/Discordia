@@ -15,7 +15,7 @@ public class CommentRepository : IRepository<Comment>
     public void Delete(Comment obj)
         => entity.Comments.Remove(obj);
 
-    public bool exists(Comment obj)
+    public Task<bool> exists(Comment obj)
     {
         throw new NotImplementedException();
     }

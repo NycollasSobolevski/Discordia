@@ -1,5 +1,8 @@
 <div class="new-forum-icon">
-    <button (click)="view()"><h4>New Forum</h4></button>
+    <button (click)="view()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+        <h4>New Forum</h4>
+    </button>
 </div>
 
 <div id="bg" (click)="view()"   [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }"></div>
@@ -13,9 +16,9 @@
             <p>{{titleCount}} / 50</p>
         </span>
         <span>
-            <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" [(ngModel)]="text" (ngModelChange)="updateText($event)"></textarea>
+            <textarea name="description" id="description" cols="30" rows="10" maxlength="100" placeholder="Description" [(ngModel)]="text" (ngModelChange)="updateText($event)"></textarea>
             <p>{{textCount}} / 100</p>
         </span>
-        <button>Create Forum</button>
+        <button (click)="createForum()">Create Forum</button>
     </div>
 </div>

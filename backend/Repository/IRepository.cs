@@ -10,5 +10,5 @@ public interface IRepository<T>
     void Delete(T obj);
     void Update(T obj);
     Task<T> Last(T obj);
-    bool exists(T obj);
+    Task<bool> exists(T obj);
 }

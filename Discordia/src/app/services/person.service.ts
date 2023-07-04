@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Jwt, LoginData, Person } from './person';
+import { Jwt, LoginData } from './person';
+import { Person } from './Model'
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

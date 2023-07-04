@@ -20,4 +20,6 @@ public partial class Forum
     public virtual ICollection<Position> Positions { get; set; } = new List<Position>();
 
     public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+
+    public virtual ICollection<Subscribed> Subscribeds { get; set; } = new List<Subscribed>();
 }

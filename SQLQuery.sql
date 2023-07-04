@@ -54,7 +54,8 @@ GO
 CREATE TABLE Subscribed(
     id int PRIMARY KEY not  null IDENTITY(1,1),
     id_person int FOREIGN KEY (id_person) REFERENCES Person(id),
-    id_position int FOREIGN KEY (id_position) REFERENCES Position(id)
+    id_position int FOREIGN KEY (id_position) REFERENCES Position(id),
+    id_forum int FOREIGN KEY (id_forum) REFERENCES Forum(id)
 )
 
 GO

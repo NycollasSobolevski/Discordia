@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, NgModule } from '@angular/core';
 import { UserService } from '../services/person.service';
-import { Person } from '../services/person';
+import { Person } from '../services/Model';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 

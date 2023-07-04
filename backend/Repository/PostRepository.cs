@@ -21,7 +21,7 @@ public class PostRepository : IRepository<Post>
         entity.SaveChanges();
     }
 
-    public bool exists(Post obj)
+    public Task<bool> exists(Post obj)
     {
         throw new NotImplementedException();
     }

@@ -41,7 +41,7 @@ public class PositionRepository : IRepository<Position>
     public async Task<Position> FirstOrDefault(Expression<Func<Position, bool>> exp)
         => await entity.Positions.FirstOrDefaultAsync(exp);
 
-    public bool exists(Position obj)
+    public Task<bool> exists(Position obj)
     {
         throw new NotImplementedException();
     }

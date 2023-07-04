@@ -5,8 +5,3 @@ public record UserData
     string Photo { get; set; }
     DateTime Birthday { get; set; }
 } 
-
-public record UserIdJwt
-{
-    public string JwT { get; set; }
-}

@@ -42,7 +42,7 @@ public class PermissionRepository : IRepository<Permission>
         throw new NotImplementedException();
     }
 
-    public bool exists(Permission obj)
+    public Task<bool> exists(Permission obj)
     {
         throw new NotImplementedException();
     }

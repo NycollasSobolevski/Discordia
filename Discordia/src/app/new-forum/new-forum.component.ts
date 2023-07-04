@@ -1,5 +1,5 @@
 import { Component,NgModule } from '@angular/core';
-import { Forum } from '../services/Forum'
+import { ForumToBack } from '../services/Forum'
 import { Jwt } from '../services/person';
 import { ForumService } from '../services/forum.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,10 +17,9 @@ export class NewForumComponent {
   protected text = '';
   protected viewContainer = false;
 
-  private creator = localStorage.getItem('jwt')
 
-  protected forum: Forum = {
-    CreatorId: "",
+  protected forum: ForumToBack = {
+    CreatorIdJwt: "",
     Title: "",
     Description: ''
   };
@@ -45,13 +44,13 @@ export class NewForumComponent {
     if(!this.checkTitle())
       return
 
-    this.forum.CreatorId = sessionStorage.getItem('jwt') ?? ""
+    this.forum.CreatorIdJwt = sessionStorage.getItem('jwt') ?? ""
     this.forum.Description = this.text
     this.forum.Title = this.title
 
     this.service.CreateForum(this.forum)
       .subscribe({
-        next: () => {
+        next: (res) => {
           location.reload()
         },
         error: (error : HttpErrorResponse) => {
@@ -61,6 +60,8 @@ export class NewForumComponent {
               break;
           
             default:
+              console.log(error);
+              
               break;
           }
         }

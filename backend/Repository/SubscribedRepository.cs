@@ -21,7 +21,7 @@ public class SubscribedRepository : IRepository<Subscribed>
         entity.SaveChanges();
     }
 
-    public bool exists(Subscribed obj)
+    public Task<bool> exists(Subscribed obj)
     {
         throw new NotImplementedException();
     }

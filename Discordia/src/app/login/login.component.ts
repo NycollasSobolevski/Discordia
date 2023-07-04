@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Person, LoginData, Jwt } from '../services/person';
+import { LoginData, Jwt } from '../services/person';
+import { Person } from '../services/Model'
 import { UserService } from '../services/person.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';

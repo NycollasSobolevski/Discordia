@@ -12,6 +12,7 @@ public class ReturnLoginData
 {
     public int IdPerson { get; set; }
 }
+
 public class ReturnLoginStringData
 {
     public string IdPerson { get; set; }

@@ -11,6 +11,10 @@ public partial class Subscribed
 
     public int? IdPosition { get; set; }
 
+    public int? IdForum { get; set; }
+
+    public virtual Forum IdForumNavigation { get; set; }
+
     public virtual Person IdPersonNavigation { get; set; }
 
     public virtual Position IdPositionNavigation { get; set; }

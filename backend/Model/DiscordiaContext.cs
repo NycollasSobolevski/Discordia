@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-#pragma warning disable
 
 namespace backend.Model;
 
@@ -42,7 +41,7 @@ public partial class DiscordiaContext : DbContext
     {
         modelBuilder.Entity<Comment>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Comments__3213E83F91A52D91");
+            entity.HasKey(e => e.Id).HasName("PK__Comments__3213E83F2C1F444F");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Comment1)
@@ -56,17 +55,17 @@ public partial class DiscordiaContext : DbContext
             entity.HasOne(d => d.IdPersonNavigation).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.IdPerson)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Comments__id_per__1BC821DD");
+                .HasConstraintName("FK__Comments__id_per__42E1EEFE");
 
             entity.HasOne(d => d.IdPostNavigation).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.IdPost)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Comments__id_pos__1CBC4616");
+                .HasConstraintName("FK__Comments__id_pos__43D61337");
         });
 
         modelBuilder.Entity<Forum>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Forum__3213E83F8CABE56F");
+            entity.HasKey(e => e.Id).HasName("PK__Forum__3213E83F72A7B6A0");
 
             entity.ToTable("Forum");
 
@@ -92,7 +91,7 @@ public partial class DiscordiaContext : DbContext
 
         modelBuilder.Entity<Func>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Funcs__3213E83F0371BE94");
+            entity.HasKey(e => e.Id).HasName("PK__Funcs__3213E83F25505ADF");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Name)
@@ -104,7 +103,7 @@ public partial class DiscordiaContext : DbContext
 
         modelBuilder.Entity<Like>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Likes__3213E83FE0BBC2D4");
+            entity.HasKey(e => e.Id).HasName("PK__Likes__3213E83F1956B038");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.IdPerson).HasColumnName("id_person");
@@ -114,17 +113,17 @@ public partial class DiscordiaContext : DbContext
             entity.HasOne(d => d.IdPersonNavigation).WithMany(p => p.Likes)
                 .HasForeignKey(d => d.IdPerson)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Likes__id_person__17F790F9");
+                .HasConstraintName("FK__Likes__id_person__3F115E1A");
 
             entity.HasOne(d => d.IdPostNavigation).WithMany(p => p.Likes)
                 .HasForeignKey(d => d.IdPost)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Likes__id_post__18EBB532");
+                .HasConstraintName("FK__Likes__id_post__40058253");
         });
 
         modelBuilder.Entity<Permission>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Permissi__3213E83F8380F4D2");
+            entity.HasKey(e => e.Id).HasName("PK__Permissi__3213E83FE6EB4F05");
 
             entity.ToTable("Permission");
 
@@ -134,11 +133,11 @@ public partial class DiscordiaContext : DbContext
 
             entity.HasOne(d => d.IdFuncsNavigation).WithMany(p => p.Permissions)
                 .HasForeignKey(d => d.IdFuncs)
-                .HasConstraintName("FK__Permissio__id_fu__0B91BA14");
+                .HasConstraintName("FK__Permissio__id_fu__31B762FC");
 
             entity.HasOne(d => d.IdPositionNavigation).WithMany(p => p.Permissions)
                 .HasForeignKey(d => d.IdPosition)
-                .HasConstraintName("FK__Permissio__id_po__0C85DE4D");
+                .HasConstraintName("FK__Permissio__id_po__32AB8735");
         });
 
         modelBuilder.Entity<Person>(entity =>
@@ -180,7 +179,7 @@ public partial class DiscordiaContext : DbContext
 
         modelBuilder.Entity<Position>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Position__3213E83FB391A6D5");
+            entity.HasKey(e => e.Id).HasName("PK__Position__3213E83F9C2C096A");
 
             entity.ToTable("Position");
 
@@ -193,12 +192,12 @@ public partial class DiscordiaContext : DbContext
 
             entity.HasOne(d => d.IdForumNavigation).WithMany(p => p.Positions)
                 .HasForeignKey(d => d.IdForum)
-                .HasConstraintName("FK__Position__id_for__08B54D69");
+                .HasConstraintName("FK__Position__id_for__2EDAF651");
         });
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Post__3213E83FC578B9E4");
+            entity.HasKey(e => e.Id).HasName("PK__Post__3213E83F5A0F31D8");
 
             entity.ToTable("Post");
 
@@ -221,38 +220,38 @@ public partial class DiscordiaContext : DbContext
 
             entity.HasOne(d => d.IdCreatorNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.IdCreator)
-                .HasConstraintName("FK__Post__id_creator__151B244E");
+                .HasConstraintName("FK__Post__id_creator__3C34F16F");
 
             entity.HasOne(d => d.IdForumNavigation).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.IdForum)
-                .HasConstraintName("FK__Post__id_forum__14270015");
+                .HasConstraintName("FK__Post__id_forum__3B40CD36");
         });
 
         modelBuilder.Entity<Subscribed>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Subscrib__3213E83FD4912F3D");
+            entity.HasKey(e => e.Id).HasName("PK__Subscrib__3213E83F25E075CD");
 
             entity.ToTable("Subscribed");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.IdForum).HasColumnName("id_forum");
             entity.Property(e => e.IdPerson).HasColumnName("id_person");
             entity.Property(e => e.IdPosition).HasColumnName("id_position");
 
+            entity.HasOne(d => d.IdForumNavigation).WithMany(p => p.Subscribeds)
+                .HasForeignKey(d => d.IdForum)
+                .HasConstraintName("FK__Subscribe__id_fo__37703C52");
+
             entity.HasOne(d => d.IdPersonNavigation).WithMany(p => p.Subscribeds)
                 .HasForeignKey(d => d.IdPerson)
-                .HasConstraintName("FK__Subscribe__id_pe__0F624AF8");
+                .HasConstraintName("FK__Subscribe__id_pe__3587F3E0");
 
             entity.HasOne(d => d.IdPositionNavigation).WithMany(p => p.Subscribeds)
                 .HasForeignKey(d => d.IdPosition)
-                .HasConstraintName("FK__Subscribe__id_po__10566F31");
+                .HasConstraintName("FK__Subscribe__id_po__367C1819");
         });
 
         OnModelCreatingPartial(modelBuilder);
-    }
-
-    internal void UpdateAsync(Comment obj)
-    {
-        throw new NotImplementedException();
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

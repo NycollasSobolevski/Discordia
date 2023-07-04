@@ -47,7 +47,7 @@ public class PersonRepository : IRepository<Person>
         throw new NotImplementedException();
     }
 
-    public bool exists(Person obj)
+    public Task<bool> exists(Person obj)
     {
         throw new NotImplementedException();
     }

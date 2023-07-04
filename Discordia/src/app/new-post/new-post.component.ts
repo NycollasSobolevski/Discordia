@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 
-import { Forum } from '../services/Forum'
+import { ForumToBack } from '../services/Forum'
 import { Jwt } from '../services/person';
 
 @Component({
@@ -17,8 +17,8 @@ export class NewPostComponent {
 
   
 
-  protected forum : Forum = {
-    CreatorId : sessionStorage.getItem('jwt') ?? "",
+  protected forum : ForumToBack = {
+    CreatorIdJwt : sessionStorage.getItem('jwt') ?? "",
     Title : this.title,
     Description : this.text
   }

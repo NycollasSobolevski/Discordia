@@ -1,3 +1,0 @@
-interface Jwt{
-    value : string
-}
