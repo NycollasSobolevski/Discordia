@@ -19,14 +19,19 @@ export class MenuComponent {
   protected forumsListFollowed : Forum[] = [];
 
   ngOnInit(): void {
-    this.getForumsFollowed()    ;
-    console.log(this.forumsListFollowed);
-    
+    this.getForumsFollowed();
   }
 
   getForumsFollowed (){
     return this.service
       .GetUserForums(this.jwt)
-      
+      .subscribe( item => {
+        let list: Forum[] = []
+        item.forEach(forums => {
+          list.push(forums)
+        })
+        this.forumsListFollowed = list;
+        console.log(this.forumsListFollowed);
+      })
   }
 }

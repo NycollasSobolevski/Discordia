@@ -9,9 +9,12 @@
                 <h4>Home</h4>
             </a>
         </span>
+
         <hr>
         <h4>Follows</h4>
-        <p>aqui vai um 'for' mostrando as paginas que o sujeito segue</p>
+        <tr *ngFor=" let Forum of forumsListFollowed" >
+            <app-menu-component [obj]="Forum"></app-menu-component>
+        </tr>
         <app-new-Forum></app-new-Forum>
         <footer>
             <p>don't have account?</p>

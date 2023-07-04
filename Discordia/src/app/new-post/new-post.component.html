@@ -9,17 +9,23 @@
 <div id="bg" (click)="view()"   [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }"></div>
 <div id="new-post-container" [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }">
     <div class="content">
-        <h3 style="color: black;" >New Post</h3>
+        <h3 >New Post</h3>
         <span>
-            <input type="text"  placeholder="Title" id="Title" maxlength="50" (ngModelChange)="updateTitle($event)" [(ngModel)]="title" >
+            <select class="input" name="selectForum" id="selectForum" (change)="getSelectValue($event)">
+                <option value="null" disabled selected>Select Forum</option>
+                <option *ngFor="let forum of this.avaliableForums" [ngValue]="forum.title">{{ forum.title }}</option>
+            </select>
+        </span>
+        <span>
+            <input class="input" type="text"  placeholder="Title" id="Title" maxlength="50" (ngModelChange)="updateTitle($event)" [(ngModel)]="post.title" >
             <h5>{{titleCount}} / 50</h5>
         </span>
         <span>
-            <textarea name="text" id="text" cols="30" rows="10" placeholder="Text"  (ngModelChange)="updateText($event)" maxlength="500" [(ngModel)]="text"></textarea>
+            <textarea class="text-area" name="text" id="text" cols="30" rows="10" placeholder="Text"  (ngModelChange)="updateText($event)" maxlength="500" [(ngModel)]="post.content"></textarea>
             <h5>{{textCount}} / 500</h5>
         </span>
         
-        <input type="file" accept="image/*" style="display: none;">
+        <input  type="file" accept="image/*" style="display: none;">
         <div>
             <button>
                 <svg>
@@ -27,7 +33,7 @@
                 </svg>
                 <h3>Image</h3>
             </button>
-            <button>Post</button>
+            <button (click)="createPost()">Post</button>
         </div>
     </div>
 </div>

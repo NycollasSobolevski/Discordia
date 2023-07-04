@@ -15,10 +15,10 @@ using backend.Data;
 [ApiController]
 [Route("user")]
 [EnableCors("MainPolicy")]
-public class personController : ControllerBase
+public class PersonController : ControllerBase
 {
     private DiscordiaContext context;
-    public personController(DiscordiaContext context)
+    public PersonController(DiscordiaContext context)
         => this.context = context;
 
 

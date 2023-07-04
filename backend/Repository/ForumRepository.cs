@@ -115,7 +115,7 @@ public class ForumRepository : IForumRepository
 
     public async Task<bool> exists( Forum obj )
     {
-        var result = await entity.Forums.Select( forum => forum.Title == obj.Title ).ToListAsync();
+        var result = await entity.Forums.Where( forum => forum.Title == obj.Title ).ToListAsync();
         if (result.Count > 0)
             return true;
         return false;

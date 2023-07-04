@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Forum } from '../services/Model';
 
 @Component({
   selector: 'app-menu-component',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./menu-component.component.css']
 })
 export class MenuComponentComponent {
+  @Input() obj : any;
 
+  constructor ( ) { } 
+
+  protected title : string = ""
+  protected creator : string = ""
+
+  ngOnInit(){
+    this.title = this.obj.title;
+    this.creator = this.obj.creator
+  }
+  
 }

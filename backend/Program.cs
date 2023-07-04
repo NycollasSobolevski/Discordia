@@ -28,6 +28,7 @@ builder.Services.AddTransient<IJwtService>(p =>
 builder.Services.AddTransient<IForumRepository, ForumRepository>();
 builder.Services.AddTransient<IRepository<Position>, PositionRepository>();
 builder.Services.AddTransient<IRepository<Subscribed>, SubscribedRepository>();
+builder.Services.AddTransient<IRepository<Post>, PostRepository>();
 
 builder.Services.AddScoped<DiscordiaContext>();
 //TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO

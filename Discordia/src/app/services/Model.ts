@@ -4,6 +4,7 @@ interface Forum {
     Title? : string 
     Created? : Date
     Description? : string 
+    Creator? : string
 }
 
 interface Person {
@@ -16,5 +17,12 @@ interface Person {
     salt: string;
 }
 
+interface Post {
+    creatorIdJwt? : string
+    forumTitle : string
+    title : string
+    content : string
+    attachment : boolean
+}
 
-export { Forum, Person }
+export { Forum, Person, Post }

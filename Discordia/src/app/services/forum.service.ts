@@ -9,12 +9,12 @@ import { Jwt } from "./person";
     providedIn: 'root'
 })
 export class ForumService {
-    constructor(private http : HttpClient) {  }
+    constructor ( private http : HttpClient ) {  }
 
     CreateForum(forum : ForumToBack){
         return this.http.post('http://localhost:5283/forum/createForum' , forum)
     };
-    GetUserForums(user : Jwt){
-        return this.http.post<Forum[]>('http://localhost:5283/forum/getUserForumsFollowed', user)
+    GetUserForums(jwt : Jwt){
+        return this.http.post<Forum[]>('http://localhost:5283/forum/getUserForumsFollowed', jwt)
     }
 }

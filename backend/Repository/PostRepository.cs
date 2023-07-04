@@ -8,9 +8,16 @@ using Model;
 public class PostRepository : IRepository<Post>
 {
     private DiscordiaContext entity;
+
+    public PostRepository( DiscordiaContext service) 
+        => this.entity = service;
+
+
     public async Task add(Post obj)
     {
-        await entity.AddAsync(obj);
+        obj.Attachment = false;
+
+        await entity.Posts.AddAsync(obj);
         await entity.SaveChangesAsync();
     }
 
