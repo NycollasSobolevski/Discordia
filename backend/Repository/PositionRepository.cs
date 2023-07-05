@@ -45,4 +45,9 @@ public class PositionRepository : IRepository<Position>
     {
         throw new NotImplementedException();
     }
+
+    public int Count(Expression<Func<Position, bool>> exp)
+    {
+        throw new NotImplementedException();
+    }
 }

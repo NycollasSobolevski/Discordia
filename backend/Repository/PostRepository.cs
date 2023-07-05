@@ -21,6 +21,11 @@ public class PostRepository : IRepository<Post>
         await entity.SaveChangesAsync();
     }
 
+    public  int Count(Expression<Func<Post, bool>> exp)
+    {
+        return entity.Posts.Select(exp).Count();
+    }
+
     public void Delete(Post obj)
     {
         

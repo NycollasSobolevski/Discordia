@@ -16,6 +16,10 @@ import { NewPostComponent } from './new-post/new-post.component';
 import { FormsModule } from '@angular/forms';
 import { MenuComponentComponent } from './menu-component/menu-component.component';
 import { NewForumComponent } from './new-forum/new-forum.component';
+import { ForumPageComponent } from './forum-page/forum-page.component';
+import { AllForumsPageComponent } from './all-forums-page/all-forums-page.component';
+import { ForumCardComponent } from './forum-card/forum-card.component';
+import { FoumInitialPageComponent } from './foum-initial-page/foum-initial-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { NewForumComponent } from './new-forum/new-forum.component';
     FeedCardComponent,
     NewPostComponent,
     MenuComponentComponent,
-    NewForumComponent
+    NewForumComponent,
+    ForumPageComponent,
+    AllForumsPageComponent,
+    ForumCardComponent,
+    FoumInitialPageComponent
   ],
   imports: [
     BrowserModule,

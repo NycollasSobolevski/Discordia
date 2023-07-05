@@ -1,0 +1,99 @@
+*{margin: 0;border: 0;padding: 0;}
+
+img{
+    background-color: var(--placeholder-color01);
+    border-radius: 50%;
+}
+h3,h6,h5{
+    color: var(--text-color01);
+}
+svg{
+    fill: var(--placeholder-color01);
+    height: 23px; width: 23px;
+}
+
+.container{
+    background-color: rgb(74, 74, 73);
+    width: 50vw;
+    max-width: 700px;
+    padding: 20px;
+    border-radius: 15px;
+}
+.container:hover{
+    cursor: pointer;
+}
+
+
+.if-followed h5, .if-unfollowed h5{
+    width: 50px;
+}
+.if-followed, .if-unfollowed{
+    height: 30px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 15px;
+}
+.if-followed{
+    background-color: var(--button-color02)
+}
+.if-unfollowed{
+    background-color: var(--button-color01)
+}
+
+
+.user-interaction{
+    width: 100px;
+}
+
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px ;
+}
+
+.object-content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer{
+    margin-top: 10px;
+}
+.statistics{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-around;
+}
+
+.followers{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+@media (max-width: 641px) {
+    button h5{
+        display: none;
+    }
+    .if-followed , .if-unfollowed{
+        width: 50%;
+    }
+    .container{
+        width: 70vw;
+        max-width: 700px;
+        padding: 10px;
+        border-radius: 15px;
+    }
+    .user-interaction{
+        width: 100px;
+    }
+}

@@ -9,14 +9,16 @@
                 <h4>Home</h4>
             </a>
         </span>
-
         <hr>
-        <h4>Follows</h4>
-        <tr *ngFor=" let Forum of forumsListFollowed" >
-            <app-menu-component [obj]="Forum"></app-menu-component>
-        </tr>
-        <app-new-Forum></app-new-Forum>
-        <footer>
+        <div class="userContent">
+
+            <h4 [ngStyle]="{'display' : !isLogged? 'none ' : 'flex '}">Follows</h4>
+            <tr *ngFor=" let Forum of forumsListFollowed" >
+                <app-menu-component [obj]="Forum"></app-menu-component>
+            </tr>
+        </div>
+            <app-new-Forum [ngStyle]="{'display' : !isLogged? 'none ' : 'flex '}"></app-new-Forum>
+        <footer [ngStyle]="{'display' : isLogged? 'none ' : 'grid '}">
             <p>don't have account?</p>
             <a href="login-page"><h5>Sign in</h5></a>
         </footer>

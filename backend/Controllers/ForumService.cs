@@ -43,7 +43,6 @@ public class ForumController : ControllerBase
                 Description = f.Description,
                 Created = f.Created
             }).ToList();
-        // var jsonString = JsonConvert.SerializeObject(forums);
 
         return Ok(forumResult);
 
@@ -77,14 +76,69 @@ public class ForumController : ControllerBase
         return Ok("Successful Forum Creation");
     }
 
-
-    [HttpPost("GetAllForuns")]
+    [HttpGet("GetAllForuns")]
     public async Task<ActionResult<IEnumerable<Forum>>> GetAllForuns(
-        [FromServices]IForumRepository forum
+        [FromServices]IForumRepository forum,
+        [FromServices]IPersonRepository personRepository,
+        [FromServices]IRepository<Subscribed> subsRepository,
+        [FromServices]IRepository<Post> postRepository
         )
-        => await forum.Filter(x => true);
+    {
+        var forums = await forum.Filter(x => true);
 
+        // var result = forums.Select(forum => new ForumToFront{
+        //     Creator = await personRepository.FirstOrDefault(person => person.Id == forum.CreatorId).Name,
+        // });
+        var list = new List<ForumToFront>();
+        foreach(var f in forums)
+        {
+            var forumData = new ForumToFront() {
+                Creator = personRepository.NewFirstOrDefault(person => person.Id == f.CreatorId).Name,
+                Description = f.Description,
+                Title = f.Title,
+                Created = f.Created,
+                // followers = subsRepository.Count(subs => subs.IdForum == f.Id),
+                // posts = postRepository.Count(post => post.IdForum == f.Id) ,
+            };
 
+            list.Add(forumData);
+        }
 
+        return Ok(list);
+
+    }
+
+    [HttpPost("GetForum")]
+    public async Task<ActionResult<ForumWithPosts>> GetForum(
+        [FromBody] ForumData data,
+        [FromServices]IForumRepository forumRepository,
+        [FromServices]IPersonRepository personRepository,
+        [FromServices]IRepository<Post> postRepository
+        )
+    {
+        Forum forum  = await forumRepository.FirstOrDefault(forum => forum.Title == data.Title);
+
+        List<PostData> postList = new List<PostData>();
+
+        var posts = await postRepository.Filter(post => post.IdForum == forum.Id);
+        foreach (var post in posts )
+            postList.Add(new PostData{
+                Title = post.Title,
+                ForumTitle = forum.Title,
+                Content = post.Content,
+                Attachment = post.Attachment
+            });
+
+        if (forum == null)
+            return BadRequest("Forum not exists");
+
+        return Ok(new ForumWithPosts{
+            Creator = personRepository.NewFirstOrDefault(person => person.Id == forum.CreatorId).Name,
+            Title = forum.Title,
+            Description = forum.Description,
+            Created = forum.Created,
+            Posts = postList
+        });
+    }
 }
 

@@ -25,6 +25,10 @@ public class ForumRepository : IForumRepository
             .Where(exp)
             .ToListAsync();
     }
+    public async Task<List<Forum>> GetAllForums(Expression<Func<Forum, bool>> exp)
+    {
+        return await entity.Forums.Where(exp).ToListAsync();
+    }
     public async Task<Forum> FirstOrDefault(Expression<Func<Forum, bool>> exp)
         => await entity.Forums.FirstOrDefaultAsync(exp);
 
@@ -120,4 +124,10 @@ public class ForumRepository : IForumRepository
             return true;
         return false;
     }
+
+    public int Count(Expression<Func<Forum, bool>> exp)
+    {
+        throw new NotImplementedException();
+    }
+
 }

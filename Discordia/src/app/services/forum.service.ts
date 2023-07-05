@@ -16,5 +16,8 @@ export class ForumService {
     };
     GetUserForums(jwt : Jwt){
         return this.http.post<Forum[]>('http://localhost:5283/forum/getUserForumsFollowed', jwt)
+    };
+    GetAllForums(){
+        return this.http.get('http://localhost:5283/forum/GetAllForuns')
     }
 }

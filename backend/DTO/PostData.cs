@@ -4,5 +4,5 @@ public record PostData
     public string ForumTitle { get; set; }
     public string Title { get; set; }
     public string Content { get; set; }
-    public bool Attachment { get; set; }
+    public bool? Attachment { get; set; }
 }

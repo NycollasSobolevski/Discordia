@@ -3,6 +3,7 @@
 
 namespace backend;
 
+using System.Linq.Expressions;
 using backend.Model;
 
 public class PermissionRepository : IRepository<Permission>
@@ -43,6 +44,11 @@ public class PermissionRepository : IRepository<Permission>
     }
 
     public Task<bool> exists(Permission obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    public int Count(Expression<Func<Permission, bool>> exp)
     {
         throw new NotImplementedException();
     }

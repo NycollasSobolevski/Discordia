@@ -7,11 +7,14 @@
     --for-color: #04BFBF;
     --alert-color1: #c2b11d;
     --alert-color2: #ff1e00;
+    --button-color01: #59269f;
+    --button-color02: #3d2c56;
     --input-background-color: rgb(50,50,50,20);
     --text-color01: #cecece;
+    --text-color02: #0D0D0D;
+    --text-color03: #9e9e9e;
     --placeholder-color01: #c0c0c0;
     --destaque-color01: #f0ffff ;
-    --text-color02: #0D0D0D;
     --pri-text-font: 'Roboto', sans-serif;
 }
 

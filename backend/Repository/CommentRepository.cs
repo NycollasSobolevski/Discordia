@@ -12,6 +12,11 @@ public class CommentRepository : IRepository<Comment>
     public async Task add(Comment obj)
         => await entity.Comments.AddAsync(obj);
 
+    public int Count(Expression<Func<Comment, bool>> exp)
+    {
+        throw new NotImplementedException();
+    }
+
     public void Delete(Comment obj)
         => entity.Comments.Remove(obj);
 

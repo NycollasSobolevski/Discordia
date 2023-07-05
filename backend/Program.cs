@@ -25,6 +25,7 @@ builder.Services.AddTransient<IJwtService>(p =>
     new JwTService(new PasswordProvider("sla"))
 );
 
+builder.Services.AddTransient<IPersonRepository, PersonRepository>();
 builder.Services.AddTransient<IForumRepository, ForumRepository>();
 builder.Services.AddTransient<IRepository<Position>, PositionRepository>();
 builder.Services.AddTransient<IRepository<Subscribed>, SubscribedRepository>();

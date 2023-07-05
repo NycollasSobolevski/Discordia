@@ -5,6 +5,8 @@ namespace backend;
 
 using Model;
 
+
+
 public class SubscribedRepository : IRepository<Subscribed>
 {
     private DiscordiaContext entity;
@@ -26,9 +28,13 @@ public class SubscribedRepository : IRepository<Subscribed>
         throw new NotImplementedException();
     }
 
-    public Task<List<Subscribed>> Filter(Expression<Func<Subscribed, bool>> exp)
+    public async Task<List<Subscribed>> Filter(Expression<Func<Subscribed, bool>> exp)
     {
-        throw new NotImplementedException();
+        return await entity.Subscribeds.Where(exp).ToListAsync();
+    }
+    public int Count(Expression<Func<Subscribed, bool>> exp)
+    {
+        return entity.Subscribeds.Select(exp).Count();
     }
 
     public Task<Subscribed> FirstOrDefault(Expression<Func<Subscribed, bool>> exp)

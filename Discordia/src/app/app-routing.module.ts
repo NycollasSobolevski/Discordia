@@ -5,12 +5,14 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedPageComponent } from './feed-page/feed-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AllForumsPageComponent } from './all-forums-page/all-forums-page.component';
 
 
 const routes: Routes = [
   {path: "", title:"Discordia - Home", component: HomePageComponent},
   {path: "login-page", title:"Discordia - Login", component: LoginPageComponent},
-  {path: "feed", component : FeedPageComponent}
+  {path: "feed", component : FeedPageComponent},
+  {path: "forums", title:"Discordia - Forums", component : AllForumsPageComponent}
 ];
 
 @NgModule({

@@ -9,7 +9,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Model;
 
-public class PersonRepository : IRepository<Person>
+public interface IPersonRepository : IRepository<Person>
+{
+    public Person NewFirstOrDefault(Expression<Func<Person, bool>> exp);
+}
+
+public class PersonRepository : IPersonRepository
 {
     private DiscordiaContext entity;
     public PersonRepository(DiscordiaContext entity)
@@ -37,9 +42,10 @@ public class PersonRepository : IRepository<Person>
             .Where(exp).ToListAsync();
     }
 
-    public Task<Person> FirstOrDefault(Expression<Func<Person, bool>> exp)
+    public Person NewFirstOrDefault(Expression<Func<Person, bool>> exp)
     {
-        throw new NotImplementedException();
+        return entity.People
+            .FirstOrDefault(exp);
     }
 
     public Task<Person> Last(Person obj)
@@ -48,6 +54,16 @@ public class PersonRepository : IRepository<Person>
     }
 
     public Task<bool> exists(Person obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<Person> IRepository<Person>.FirstOrDefault(Expression<Func<Person, bool>> exp)
+    {
+        throw new NotImplementedException();
+    }
+
+    public int Count(Expression<Func<Person, bool>> exp)
     {
         throw new NotImplementedException();
     }

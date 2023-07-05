@@ -11,4 +11,5 @@ public interface IRepository<T>
     void Update(T obj);
     Task<T> Last(T obj);
     Task<bool> exists(T obj);
+    int Count(Expression<Func<T, bool>> exp);
 }

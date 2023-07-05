@@ -1,0 +1,39 @@
+<div id="main">
+    <div class="container">
+        <div class="header">
+            <div class="object-content">
+                <img src="../../assets/images/person-standard-logo.png" width="60px" alt="">
+                <div class="info">
+                    <h3>{{obj.title}}</h3>
+                    <h6>{{obj.creator}}</h6>
+                </div>
+            </div>
+            <div class="user-interaction">
+                <button class="if-unfollowed follow-button">
+                    <svg ><path d="M21 3C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.455L2 22.5V4C2 3.44772 2.44772 3 3 3H21ZM20 5H4V18.385L5.76333 17H20V5ZM17 7V15H15V7H17ZM11 8V9.999L13 10V12L11 11.999V14H9V11.999L7 12V10L9 9.999V8H11Z"></path></svg>
+                    <h5>Follow</h5>
+                </button>
+                <button class="if-followed follow-button">
+                    <svg ><path d="M 21 3 C 21.5523 3 22 3.4477 22 4 V 18 C 22 18.5523 21.5523 19 21 19 H 6.455 L 2 22.5 V 4 C 2 3.4477 2.4477 3 3 3 H 21 Z M 17 7 H 15 V 15 H 17 V 7 Z M 11 8 V 9.999 L 7 10 V 12 L 9 11.999 H 11 V 11.999 L 13 12 V 10 L 11 9.999 V 8 Z" ></path></svg>
+                    <h5>Unfollow</h5>
+                </button>
+            </div>
+        </div>
+        <div class="content">
+            <p>{{obj.description}}</p>
+        </div>
+        <div class="footer">
+            <div class="statistics">
+
+                <div class="followers">
+                    <svg><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM9.71002 19.6674C8.74743 17.6259 8.15732 15.3742 8.02731 13H4.06189C4.458 16.1765 6.71639 18.7747 9.71002 19.6674ZM10.0307 13C10.1811 15.4388 10.8778 17.7297 12 19.752C13.1222 17.7297 13.8189 15.4388 13.9693 13H10.0307ZM19.9381 13H15.9727C15.8427 15.3742 15.2526 17.6259 14.29 19.6674C17.2836 18.7747 19.542 16.1765 19.9381 13ZM4.06189 11H8.02731C8.15732 8.62577 8.74743 6.37407 9.71002 4.33256C6.71639 5.22533 4.458 7.8235 4.06189 11ZM10.0307 11H13.9693C13.8189 8.56122 13.1222 6.27025 12 4.24799C10.8778 6.27025 10.1811 8.56122 10.0307 11ZM14.29 4.33256C15.2526 6.37407 15.8427 8.62577 15.9727 11H19.9381C19.542 7.8235 17.2836 5.22533 14.29 4.33256Z"></path></svg>
+                    <h4>{{obj.followers}}</h4>
+                </div>
+                <div class="followers">
+                    <svg viewBox="0 0 24 24"><path d="M6.45455 19L2 22.5V4C2 3.44772 2.44772 3 3 3H21C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.45455ZM5.76282 17H20V5H4V18.3851L5.76282 17ZM11 10H13V12H11V10ZM7 10H9V12H7V10ZM15 10H17V12H15V10Z"></path></svg>
+                    <h4>{{obj.posts}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

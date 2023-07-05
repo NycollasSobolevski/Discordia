@@ -38,6 +38,9 @@ export class NewPostComponent {
 
 
   ngOnInit(){
+    if(this.jwt.value == "")
+      return
+    
     this.getAvaliableForums();
   }
 

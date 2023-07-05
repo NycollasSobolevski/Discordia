@@ -10,8 +10,10 @@ import { Forum } from '../services/Model';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
+  
   constructor(private service: ForumService) {  }
-
+  
+  protected isLogged = false;
   jwt : Jwt = {
     value : sessionStorage.getItem('jwt') ?? ""
   }
@@ -19,7 +21,13 @@ export class MenuComponent {
   protected forumsListFollowed : Forum[] = [];
 
   ngOnInit(): void {
-    this.getForumsFollowed();
+    console.log(this.jwt.value);
+    if(this.jwt.value == "")
+      this.isLogged = false
+    else
+      this.isLogged = true
+    if(this.isLogged)
+      this.getForumsFollowed();
   }
 
   getForumsFollowed (){
