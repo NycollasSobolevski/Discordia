@@ -1,7 +1,15 @@
+.overlay {
+
+}
+
 #main{
     display: flex;
+    width: 100%;height: calc(100% - 60px);
+
 }
 .feed{
+    position: relative;
+    top: 60px;
     margin: 50px 0 0 0 ;
     width: 100%;
     display: flex;

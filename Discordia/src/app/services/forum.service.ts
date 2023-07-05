@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { ForumToBack } from "./Forum";
+import { ForumToBack, ForumWithPosts } from "./Forum";
 import { Forum } from "./Model";
 import { Jwt } from "./person";
 
@@ -19,5 +19,12 @@ export class ForumService {
     };
     GetAllForums(){
         return this.http.get('http://localhost:5283/forum/GetAllForuns')
+    };
+    PostForumPage( forum : ForumToBack ){
+        return this.http.post('http://localhost:5283/forum/GetForumPage', forum)
+    };
+    GetForumPage(name : string){
+        return this.http.get<ForumWithPosts>('http://localhost:5283/forum/GetForumPage/' + name)
     }
+
 }

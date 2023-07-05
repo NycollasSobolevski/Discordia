@@ -9,6 +9,16 @@ import { ForumService } from '../services/forum.service';
 })
 export class AllForumsPageComponent {
   protected allForums : Forum[] = []
+  protected newListForums : Forum[] = []
+  search = ''
+
+  searchChanged(string : string){
+  //   console.log(this.allForums);
+  //   this.search = string;
+  //   this.newListForums = this.allForums.filter(x => x.Title );
+  //   console.log(this.newListForums);
+    
+  }
 
   constructor( private service : ForumService ){  }
 

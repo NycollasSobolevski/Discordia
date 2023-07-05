@@ -1,1 +1,19 @@
-<p>forum-page works!</p>
+<div id="main">
+    <div id="forum-info">
+        <div class="capa">
+            <img src="../../assets/images/background-login.jpg" alt="">
+        </div>
+        <div class="container">
+            <div class="content-forum">
+                <img src="../../assets/images/person-standard-logo.png" alt="">
+                <h2>{{forum.title}}</h2>
+                <h4>{{forum.description}}</h4>
+                <h6>/{{forum.creator}}</h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="posts">
+        <app-feed-card *ngFor="let post of forum.posts"></app-feed-card>
+    </div>
+</div>

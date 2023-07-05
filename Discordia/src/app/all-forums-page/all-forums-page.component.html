@@ -1,6 +1,11 @@
 <div id="main">
     <app-menu></app-menu>
     <div class="content">
+        <input type="text" (ngModelChange)="searchChanged($event)" [(ngModel)]="search">
         <app-forum-card *ngFor="let forum of this.allForums" [obj]="forum" ></app-forum-card>
     </div>
+    <!-- <footer>
+        <app-footer></app-footer>
+    </footer> -->
 </div>
+

@@ -1,5 +1,6 @@
 .container{
     height: calc(100vh - 60px); width: 17vw;
+    top: 60px;
     max-width: 250px;
     background: rgb(2,0,36);
     background: linear-gradient(135deg, var(--pri-color) 0%, var(--ter-color) 100%);

@@ -108,7 +108,7 @@ public class ForumController : ControllerBase
 
     }
 
-    [HttpPost("GetForum")]
+    [HttpPost("GetForumPage")]
     public async Task<ActionResult<ForumWithPosts>> GetForum(
         [FromBody] ForumData data,
         [FromServices]IForumRepository forumRepository,
@@ -117,6 +117,38 @@ public class ForumController : ControllerBase
         )
     {
         Forum forum  = await forumRepository.FirstOrDefault(forum => forum.Title == data.Title);
+
+        List<PostData> postList = new List<PostData>();
+
+        var posts = await postRepository.Filter(post => post.IdForum == forum.Id);
+        foreach (var post in posts )
+            postList.Add(new PostData{
+                Title = post.Title,
+                ForumTitle = forum.Title,
+                Content = post.Content,
+                Attachment = post.Attachment
+            });
+
+        if (forum == null)
+            return BadRequest("Forum not exists");
+
+        return Ok(new ForumWithPosts{
+            Creator = personRepository.NewFirstOrDefault(person => person.Id == forum.CreatorId).Name,
+            Title = forum.Title,
+            Description = forum.Description,
+            Created = forum.Created,
+            Posts = postList
+        });
+    }
+    [HttpGet("GetForumPage/{name}")]
+    public async Task<ActionResult<ForumWithPosts>> GetForum(
+        string name,
+        [FromServices]IForumRepository forumRepository,
+        [FromServices]IPersonRepository personRepository,
+        [FromServices]IRepository<Post> postRepository
+        )
+    {
+        Forum forum  = await forumRepository.FirstOrDefault(forum => forum.Title == name);
 
         List<PostData> postList = new List<PostData>();
 

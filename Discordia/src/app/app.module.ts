@@ -20,6 +20,8 @@ import { ForumPageComponent } from './forum-page/forum-page.component';
 import { AllForumsPageComponent } from './all-forums-page/all-forums-page.component';
 import { ForumCardComponent } from './forum-card/forum-card.component';
 import { FoumInitialPageComponent } from './foum-initial-page/foum-initial-page.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { FoumInitialPageComponent } from './foum-initial-page/foum-initial-page.
     ForumPageComponent,
     AllForumsPageComponent,
     ForumCardComponent,
-    FoumInitialPageComponent
+    FoumInitialPageComponent,
+    NotFoundPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
