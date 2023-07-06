@@ -1,6 +1,6 @@
 <div class="new-forum-icon">
     <button (click)="view()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+        <svg viewBox="0 0 24 24"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
         <h4>New Forum</h4>
     </button>
 </div>
@@ -9,8 +9,6 @@
 <div id="new-forum-container" [ngStyle]="{'display' : viewContainer? 'flex' : 'none'}">
     <div class="content">
         <h3>NEW FORUM </h3>
-        
-        <!-- TODO: drop box com os forums disponiveis -->
         <span>
             <input type="text" placeholder="Title*" id="Title" maxlength="50" [(ngModel)]="title"  (ngModelChange)="updateTitle($event)">
             <p>{{titleCount}} / 50</p>

@@ -68,6 +68,7 @@ public class ForumRepository : IForumRepository
             Name = "User"
         };
         await entity.Positions.AddAsync(newUser);
+        await entity.SaveChangesAsync();
 
         Subscribed newSub = new Subscribed{
             IdPerson = obj.CreatorId,
@@ -83,9 +84,9 @@ public class ForumRepository : IForumRepository
             };
             Permission userFuncs = new Permission{
                 IdFuncs = i,
-                IdPosition = newAdmin.Id
+                IdPosition = newUser.Id
             };
-
+            //TODO: criar classe para implementar e substituir numeros 
             if(i != 7 || i != 8 || i != 9 || i != 10)
                 await entity.Permissions.AddAsync(userFuncs);
             

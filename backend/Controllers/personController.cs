@@ -23,6 +23,19 @@ public class PersonController : ControllerBase
 
 
 
+    [HttpPost("GetPermissions")]
+    public async Task<ActionResult<IEnumerable<Func>>> Post(
+        [FromBody] PermissionData body,
+        [FromServices] IJwtService jwtService,
+        [FromServices] ISubscribedRepository postRepository
+        )
+    {
+        var userjwt = jwtService.Validate<ReturnLoginData>(body.jwt);
+        int idUser = userjwt.IdPerson;
+
+        return Ok(postRepository.VerifyPermission( idUser, body.ForumName ));
+    }
+
     [HttpPost("login")]
     public async Task<ActionResult<Jwt>> Login(
         [FromBody] LoginData login,

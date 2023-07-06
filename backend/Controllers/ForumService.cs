@@ -54,7 +54,7 @@ public class ForumController : ControllerBase
         [FromBody]ForumData forum,
         [FromServices]IForumRepository forumRepo,
         [FromServices]IRepository<Position> positionRepo,
-        [FromServices]IRepository<Subscribed> subRepo,
+        [FromServices]ISubscribedRepository subRepo,
         [FromServices]IJwtService jwtService
         )
     {
@@ -72,7 +72,6 @@ public class ForumController : ControllerBase
         int response = await forumRepo.addAsync( newForum );
         if (response == 409)
             return BadRequest("Forum Exists");
-        System.Console.WriteLine(response);
         return Ok("Successful Forum Creation");
     }
 
@@ -80,15 +79,12 @@ public class ForumController : ControllerBase
     public async Task<ActionResult<IEnumerable<Forum>>> GetAllForuns(
         [FromServices]IForumRepository forum,
         [FromServices]IPersonRepository personRepository,
-        [FromServices]IRepository<Subscribed> subsRepository,
+        [FromServices]ISubscribedRepository subsRepository,
         [FromServices]IRepository<Post> postRepository
         )
     {
         var forums = await forum.Filter(x => true);
 
-        // var result = forums.Select(forum => new ForumToFront{
-        //     Creator = await personRepository.FirstOrDefault(person => person.Id == forum.CreatorId).Name,
-        // });
         var list = new List<ForumToFront>();
         foreach(var f in forums)
         {
@@ -97,6 +93,7 @@ public class ForumController : ControllerBase
                 Description = f.Description,
                 Title = f.Title,
                 Created = f.Created,
+                //TODO:  
                 // followers = subsRepository.Count(subs => subs.IdForum == f.Id),
                 // posts = postRepository.Count(post => post.IdForum == f.Id) ,
             };
@@ -171,6 +168,38 @@ public class ForumController : ControllerBase
             Created = forum.Created,
             Posts = postList
         });
+    }
+
+
+    [HttpPost("FollowForum")]
+    public async Task<ActionResult> FollowForum(
+        [FromBody]ForumData body,
+        [FromServices] ISubscribedRepository subsRepository,
+        [FromServices] IForumRepository forumRepository,
+        [FromServices] IRepository<Position> positionRepository,
+        [FromServices]IJwtService jwtService
+    ){
+
+        var user = jwtService.Validate<ReturnLoginData>(body.CreatorIdJwt);
+        int idUser = user.IdPerson;
+
+        var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
+
+        var sub = await subsRepository.Filter(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
+        if (sub != null)
+            return BadRequest("This user already follows this forum");
+        var position = await positionRepository
+            .FirstOrDefault(position =>
+                position.IdForum == forum.Id && 
+                position.Name == "User");
+
+        await subsRepository.add(new Subscribed{
+            IdPerson = idUser,
+            IdForum = forum.Id,
+            IdPosition = position.Id,
+        });
+
+        return Ok("successful registration!");
     }
 }
 

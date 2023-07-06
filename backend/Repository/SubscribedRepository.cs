@@ -5,11 +5,20 @@ namespace backend;
 
 using Model;
 
+public interface ISubscribedRepository : IRepository<Subscribed>
+{
+    Task<IEnumerable<Func>> VerifyPermission(int IdPerson, string ForumName);
+}
 
-
-public class SubscribedRepository : IRepository<Subscribed>
+public class SubscribedRepository : ISubscribedRepository
 {
     private DiscordiaContext entity;
+
+    public SubscribedRepository(DiscordiaContext entity)
+    {
+        this.entity = entity;
+    }
+
     public async Task add(Subscribed obj)
     {
         await entity.Subscribeds.AddAsync(obj);
@@ -51,5 +60,27 @@ public class SubscribedRepository : IRepository<Subscribed>
     {
         entity.Update(obj);
         entity.SaveChanges();
+    }
+
+    public async Task<IEnumerable<Func>> VerifyPermission( int IdPerson, string ForumName )
+    {
+        var forum = entity.Forums
+            .FirstOrDefault(x => x.Title == ForumName);
+    
+        var query =
+            from subs in entity.Subscribeds
+            join pos in entity.Positions on subs.IdPosition equals pos.Id
+            join per in entity.Permissions on pos.Id equals per.IdPosition
+            join func in entity.Funcs on per.IdFuncs equals func.Id
+            where subs.IdForum == forum.Id
+            where subs.IdPerson == IdPerson
+            select func;
+        
+        var permissionList = await query.ToListAsync();
+
+        foreach (var x in permissionList)
+            Console.WriteLine(x.Name);
+
+        return permissionList;
     }
 }
