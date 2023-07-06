@@ -21,7 +21,6 @@ export class MenuComponent {
   protected forumsListFollowed : Forum[] = [];
 
   ngOnInit(): void {
-    console.log(this.jwt.value);
     if(this.jwt.value == "")
       this.isLogged = false
     else
@@ -39,7 +38,6 @@ export class MenuComponent {
           list.push(forums)
         })
         this.forumsListFollowed = list;
-        console.log(this.forumsListFollowed);
       })
   }
 }

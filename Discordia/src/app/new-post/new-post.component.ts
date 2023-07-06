@@ -55,7 +55,6 @@ export class NewPostComponent {
           list.push(forums)
         })
         this.avaliableForums = list;
-        console.log(this.avaliableForums);
       })
   }
 
@@ -75,7 +74,6 @@ export class NewPostComponent {
 
 
   checkContent(){
-    console.log(this.post.forumTitle);
     
     return this.textCount > 0 && this.post.forumTitle != ""
   }
@@ -89,7 +87,6 @@ export class NewPostComponent {
       return
     }
 
-    console.log(this.post);
     
     
     this.postService.CreatePost(this.post)

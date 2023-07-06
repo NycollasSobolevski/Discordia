@@ -28,7 +28,7 @@ public class SubscribedRepository : ISubscribedRepository
 
     public void Delete(Subscribed obj)
     {
-        entity.Remove(obj);
+        entity.Subscribeds.Remove(obj);
         entity.SaveChanges();
     }
 
@@ -46,10 +46,8 @@ public class SubscribedRepository : ISubscribedRepository
         return entity.Subscribeds.Select(exp).Count();
     }
 
-    public Task<Subscribed> FirstOrDefault(Expression<Func<Subscribed, bool>> exp)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<Subscribed> FirstOrDefault(Expression<Func<Subscribed, bool>> exp)
+        => await entity.Subscribeds.FirstOrDefaultAsync(exp);
 
     public Task<Subscribed> Last(Subscribed obj)
     {

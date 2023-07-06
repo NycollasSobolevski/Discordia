@@ -177,29 +177,61 @@ public class ForumController : ControllerBase
         [FromServices] ISubscribedRepository subsRepository,
         [FromServices] IForumRepository forumRepository,
         [FromServices] IRepository<Position> positionRepository,
-        [FromServices]IJwtService jwtService
+        [FromServices] IJwtService jwtService
     ){
+        try
+        {
+            var user = jwtService.Validate<ReturnLoginData>(body.CreatorIdJwt);
+            int idUser = user.IdPerson;
 
-        var user = jwtService.Validate<ReturnLoginData>(body.CreatorIdJwt);
-        int idUser = user.IdPerson;
+            var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
 
-        var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
+            var sub = await subsRepository.Filter(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
+            if (sub != null)
+                return BadRequest("This user already follows this forum");
+            var position = await positionRepository
+                .FirstOrDefault(position =>
+                    position.IdForum == forum.Id && 
+                    position.Name == "User");
 
-        var sub = await subsRepository.Filter(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
-        if (sub != null)
-            return BadRequest("This user already follows this forum");
-        var position = await positionRepository
-            .FirstOrDefault(position =>
-                position.IdForum == forum.Id && 
-                position.Name == "User");
+            await subsRepository.add(new Subscribed{
+                IdPerson = idUser,
+                IdForum = forum.Id,
+                IdPosition = position.Id,
+            });
 
-        await subsRepository.add(new Subscribed{
-            IdPerson = idUser,
-            IdForum = forum.Id,
-            IdPosition = position.Id,
-        });
+            return Ok("successful registration!");
+        }
+        catch (System.Exception)
+        {
+            
+            return BadRequest();
+        }
+    }
 
-        return Ok("successful registration!");
+    [HttpPost("UnfollowForum")]
+    public async Task<IActionResult> Unfollow(
+        [FromBody] ForumData body,
+        [FromServices] ISubscribedRepository subsRepository,
+        [FromServices] IForumRepository forumRepository,
+        [FromServices] IRepository<Position> positionRepository,
+        [FromServices] IJwtService jwtService        
+    )
+    {
+        try{
+            var user = jwtService.Validate<ReturnLoginData>(body.CreatorIdJwt);
+            int idUser = user.IdPerson;
+
+            var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
+
+            var sub = await subsRepository.FirstOrDefault(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
+
+            subsRepository.Delete(sub);
+            return Ok();
+        }
+        catch{
+            return BadRequest("Error");
+        }
     }
 }
 

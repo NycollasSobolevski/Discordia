@@ -2,11 +2,9 @@
   <a href="/"><img width="35" alt="Discordia Logo" src="../assets/images/logo.png" /></a>
   <h2>Discordia</h2>
   <div class="spacer"></div>
-  <input type="search" name="" id="serachBox">
   <div class="spacer"></div>
-  <a href="/login-page" class="primary-button" [ngStyle]="{'display' : !isLogged? 'flex' : 'none'}"><h3>Login</h3></a>
   <a href="/forums" class="primary-button" ><h3>Forums</h3></a>
-  <button>
+  <button (click)="switchOptions()">
     <svg id="tools" height="24"width="24"data-name="Logo"xmlns="http://www.w3.org/2000/svg"viewBox="0 0 30 30"fill="#fff">
       <path d="M0 0h24v24H0V0z" fill="none" />
       <path
@@ -17,4 +15,10 @@
       />
     </svg>
   </button>
+  <div class="user-container-config-bg" *ngIf="viewConfig" (click)="switchOptions()"> </div>
+  <div class="user-container-config" *ngIf="viewConfig">
+    <button>Perfil</button>
+    <button>Settings</button>
+    <button (click)="signOut()">Sign Out</button>
+  </div>
 </div>

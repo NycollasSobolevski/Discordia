@@ -35,7 +35,6 @@ export class NewAccountComponent {
   }
 
   checkPassword() {
-    console.log(this.user.password === this.rePassword);
     
     return this.user.password === this.rePassword
   }
@@ -69,7 +68,6 @@ export class NewAccountComponent {
 
 
   signInClicked(){
-    console.log(this.user + 'OKAY');
     if(!this.checkData()){
       this.alertDiv = true;
       this.alertContent = 'inconsistent data'

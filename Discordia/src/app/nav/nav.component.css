@@ -40,6 +40,36 @@
     margin: 0 16px;
   }
 
+
+  .user-container-config {
+    position: absolute;
+    display: flex;
+    /* inset: auto auto  ; */
+    right: 15px; top: 60px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    background-color: rgb(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    border: solid white 2px ;
+    border-radius: 5px;
+  }
+  .user-container-config button{
+    background-color: rgb(0, 0, 0, 0.05);
+    border: solid var(--placeholder-color) 2px ;
+    width: 100px;
+    height: 25px;
+    color: var(--text-color01);
+  }
+  .user-container-config-bg{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+  }
+
+
+
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link) ,
@@ -61,6 +91,9 @@
       transform: rotate(-5deg);
     }
   }
+
+
+
 
   @media screen and (max-width: 575px) {
     svg#rocket-smoke {

@@ -43,7 +43,7 @@ public class PersonController : ControllerBase
         )
     {
         var people = this.context.People
-            .Where(x => x.Name == login.Indentify || x.Email == login.Indentify)
+            .Where(x => x.Name.Contains(login.Indentify) || x.Email == login.Indentify)
             .FirstOrDefault();
 
         if (people == null)
