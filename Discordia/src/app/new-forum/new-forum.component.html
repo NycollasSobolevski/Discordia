@@ -5,8 +5,8 @@
     </button>
 </div>
 
-<div id="bg" (click)="view()"   [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }"></div>
-<div id="new-forum-container" [ngStyle]="{'display' : viewContainer? 'flex' : 'none'}">
+<div id="bg" (click)="view()"    *ngIf="viewContainer"></div>
+<div id="new-forum-container"  *ngIf="viewContainer">
     <div class="content">
         <h3>NEW FORUM </h3>
         <span>

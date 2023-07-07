@@ -12,6 +12,7 @@ import { Post } from '../services/Model';
 export class ForumPageComponent {
   forumname = ''
   subscription : any;
+
   forum : ForumWithPosts ={
     created: new Date,
     description: "",

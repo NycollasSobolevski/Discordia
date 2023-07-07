@@ -27,11 +27,12 @@ export class NewPostComponent {
   protected viewContainer = false;
 
   protected post : Post = {
-    creatorIdJwt : this.jwt.value,
-    forumTitle : '',
-    title : '',
-    content : '',
-    attachment : false
+    creatorIdJwt: this.jwt.value,
+    forumTitle: '',
+    title: '',
+    content: '',
+    attachment: false,
+    created: new Date
   }
 
   protected avaliableForums : any[] = []

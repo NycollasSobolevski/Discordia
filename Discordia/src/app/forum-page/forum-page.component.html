@@ -14,6 +14,6 @@
     </div>
 
     <div class="posts">
-        <app-feed-card *ngFor="let post of forum.posts"></app-feed-card>
+        <app-feed-card *ngFor="let post of forum.posts" [obj]="post"></app-feed-card>
     </div>
 </div>

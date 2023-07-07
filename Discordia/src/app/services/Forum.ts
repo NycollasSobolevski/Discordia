@@ -1,4 +1,4 @@
-import { Post } from "./Model"
+import { Post, PostCard } from "./Model"
 import { Jwt } from "./person"
 
 interface ForumToBack{
@@ -12,7 +12,7 @@ interface ForumWithPosts{
     title : string
     description : string
     created : Date
-    posts : Post[]
+    posts : PostCard[]
 }
 
 export { ForumToBack, ForumWithPosts }

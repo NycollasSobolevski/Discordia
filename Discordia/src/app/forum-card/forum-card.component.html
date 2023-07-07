@@ -13,7 +13,7 @@
                     <svg ><path d="M21 3C21.5523 3 22 3.44772 22 4V18C22 18.5523 21.5523 19 21 19H6.455L2 22.5V4C2 3.44772 2.44772 3 3 3H21ZM20 5H4V18.385L5.76333 17H20V5ZM17 7V15H15V7H17ZM11 8V9.999L13 10V12L11 11.999V14H9V11.999L7 12V10L9 9.999V8H11Z"></path></svg>
                     <h5>Follow</h5>
                 </button>
-                <button class="if-followed follow-button" *ngIf="followed" (click)="follow()">
+                <button class="if-followed follow-button" *ngIf="followed" (click)="unfollow()">
                     <svg ><path d="M 21 3 C 21.5523 3 22 3.4477 22 4 V 18 C 22 18.5523 21.5523 19 21 19 H 6.455 L 2 22.5 V 4 C 2 3.4477 2.4477 3 3 3 H 21 Z M 17 7 H 15 V 15 H 17 V 7 Z M 11 8 V 9.999 L 7 10 V 12 L 9 11.999 H 11 V 11.999 L 13 12 V 10 L 11 9.999 V 8 Z" ></path></svg>
                     <h5>Unfollow</h5>
                 </button>

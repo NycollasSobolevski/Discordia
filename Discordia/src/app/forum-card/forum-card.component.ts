@@ -43,6 +43,9 @@ export class ForumCardComponent {
   follow(){
     this.followed = !this.followed
   }
+  unfollow(){
+    this.followed = !this.followed
+  }
 
   func(){
     this.router.navigate(['forum/'+ this.obj.title])

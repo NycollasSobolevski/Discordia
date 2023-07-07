@@ -6,8 +6,8 @@
     </svg>
 </button>
 
-<div id="bg" (click)="view()"   [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }"></div>
-<div id="new-post-container" [ngStyle]="{'display' : viewContainer ? 'flex' : 'none' }">
+<div id="bg" (click)="view()"   *ngIf="viewContainer"></div>
+<div id="new-post-container" *ngIf="viewContainer">
     <div class="content">
         <h3 >New Post</h3>
         <span>

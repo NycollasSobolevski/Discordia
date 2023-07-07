@@ -119,12 +119,17 @@ public class ForumController : ControllerBase
 
         var posts = await postRepository.Filter(post => post.IdForum == forum.Id);
         foreach (var post in posts )
+        {
+            var creator = personRepository.NewFirstOrDefault(person => person.Id == post.IdCreator);
             postList.Add(new PostData{
+                CreatorIdJwt = creator.Name,
                 Title = post.Title,
                 ForumTitle = forum.Title,
                 Content = post.Content,
-                Attachment = post.Attachment
+                Attachment = post.Attachment,
+                Created = post.CreatedAt
             });
+        }
 
         if (forum == null)
             return BadRequest("Forum not exists");
@@ -151,13 +156,17 @@ public class ForumController : ControllerBase
 
         var posts = await postRepository.Filter(post => post.IdForum == forum.Id);
         foreach (var post in posts )
+        {
+            var creator = personRepository.NewFirstOrDefault(person => person.Id == post.IdCreator);
             postList.Add(new PostData{
+                CreatorIdJwt = creator.Name,
                 Title = post.Title,
                 ForumTitle = forum.Title,
                 Content = post.Content,
-                Attachment = post.Attachment
+                Attachment = post.Attachment,
+                Created = post.CreatedAt
             });
-
+        }
         if (forum == null)
             return BadRequest("Forum not exists");
 

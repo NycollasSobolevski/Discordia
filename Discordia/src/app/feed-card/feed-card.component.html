@@ -5,8 +5,9 @@
                 <div id="person-data">
                     <img src="../../assets/images/person-standard-logo.png" alt="person-logo" width="50px" height="50px">
                     <div>
-                        <h5>Irineu da Silva</h5>
-                        <div id="post-data"><p>Edited in: dd/mm/aaaa</p></div>
+                        <h5>{{post.creatorIdJwt}}</h5>
+                        <div id="post-data"><p>Edited in: 
+                            {{post.created.getDate()}} / {{post.created.getMonth()}} / {{post.created.getFullYear()}} </p></div>
                     </div>
                 </div>
             </div>
@@ -23,9 +24,9 @@
             </div>
         </div>
         <div id="post-content">
-            <h4 id="post-title">Title</h4>
-            <p id="post-text">text Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, error? In odit adipisci ipsam totam tenetur maxime exercitationem quo eaque numquam, non unde quasi excepturi, quis hic veniam qui labore.</p>
-            <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/06/21/16873550466244.png"
+            <h4 id="post-title">{{post.title}}</h4>
+            <p id="post-text">{{post.content}}</p>
+            <img *ngIf="post.attachment" src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/06/21/16873550466244.png"
                  alt="post-img">
         </div>
         <div id="footer">
