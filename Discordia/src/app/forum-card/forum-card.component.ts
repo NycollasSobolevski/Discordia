@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ForumService } from '../services/forum.service';
 import { ForumToBack } from '../services/Forum';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Forum } from '../services/Model';
 export class ForumCardComponent {
   @Input() obj : any;
   @Input() followedList : Forum[] = [];
+  @Output() followClicked = new EventEmitter<void>()
 
   protected followed = false;
 
@@ -23,28 +24,52 @@ export class ForumCardComponent {
     Description: ''
   }
 
-  ngOnInit(){
-    this.checkIfFollow(this.followedList);
+  ngOnInit() {
     this.sla.Title = this.obj.title
-    console.log("followedList" + this.followedList);
-    
+    this.checkIfFollow(this.followedList);
   }
   
+  ngOnChanges() {
+    this.checkIfFollow(this.followedList)
+  }
+
   checkIfFollow(forumList: Forum[])
   {
-    forumList.forEach(element => {
-      if (element.Title === this.obj.title) {
-        this.followed = true;
-      }
-      console.log(element);
+    forumList.forEach(( element : ForumToBack | any ) => {
+      if(this.sla.Title === element.title)
+        this.followed = true
+        
     });
   }
 
   follow(){
-    this.followed = !this.followed
+    let forum : ForumToBack = {
+      CreatorIdJwt: sessionStorage.getItem('jwt') ?? "",
+      Title: this.sla.Title,
+      Description: ''
+    }
+    this.service.FollowForum( forum ).subscribe({
+      next : (res) => {
+        console.log(res);
+        
+      }
+    })
+    this.followClicked.emit();
   }
+
   unfollow(){
-    this.followed = !this.followed
+    let forum : ForumToBack = {
+      CreatorIdJwt: sessionStorage.getItem('jwt') ?? "",
+      Title: this.sla.Title,
+      Description: ''
+    }
+    this.service.UnfollowForum( forum ).subscribe({
+      next : (res) => {
+        console.log(res);
+        
+      }
+    })
+    this.followClicked.emit();
   }
 
   func(){

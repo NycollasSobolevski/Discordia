@@ -16,5 +16,9 @@ export class UserService {
 
   registerUser(pessoinha : Person) {
     return this.http.post('http://localhost:5283/user/addUser/', pessoinha)
+  };
+
+  getUserData( jwt : Jwt ) {
+    return this.http.post('http://localhost:5283/user/userData/', jwt)
   }
 }

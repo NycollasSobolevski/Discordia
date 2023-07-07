@@ -37,6 +37,7 @@ public class ForumRepository : IForumRepository
     {
         var groups = entity.Subscribeds
             .Where(s => s.IdPerson == user.Id)
+            .Include(s => s.IdForumNavigation.Creator)
             .Select(s => s.IdForumNavigation);
 
         return await groups.ToListAsync();

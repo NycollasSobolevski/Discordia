@@ -22,6 +22,7 @@ import { ForumCardComponent } from './forum-card/forum-card.component';
 import { FoumInitialPageComponent } from './foum-initial-page/foum-initial-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FooterComponent } from './footer/footer.component';
     ForumCardComponent,
     FoumInitialPageComponent,
     NotFoundPageComponent,
-    FooterComponent
+    FooterComponent,
+    UserPageComponent
   ],
   imports: [
     BrowserModule,

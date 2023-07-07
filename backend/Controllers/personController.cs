@@ -17,12 +17,6 @@ using backend.Data;
 [EnableCors("MainPolicy")]
 public class PersonController : ControllerBase
 {
-    private DiscordiaContext context;
-    public PersonController(DiscordiaContext context)
-        => this.context = context;
-
-
-
     [HttpPost("GetPermissions")]
     public async Task<ActionResult<IEnumerable<Func>>> Post(
         [FromBody] PermissionData body,
@@ -39,12 +33,15 @@ public class PersonController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult<Jwt>> Login(
         [FromBody] LoginData login,
+        [FromServices] IPersonRepository personRepository,
         [FromServices] IJwtService jwtService
         )
     {
-        var people = this.context.People
-            .Where(x => x.Name.Contains(login.Indentify) || x.Email == login.Indentify)
-            .FirstOrDefault();
+        var people = personRepository
+            .NewFirstOrDefault(x => 
+                x.Name.Contains(login.Indentify) 
+                || x.Email == login.Indentify
+                );
 
         if (people == null)
             return NotFound();
@@ -63,13 +60,18 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost("addUser")]
-    public ActionResult UserRegister([FromBody] Person login)
+    public ActionResult UserRegister(
+        [FromBody] Person login,
+        [FromServices] IPersonRepository personRepository
+        )
     {
         if (!ModelState.IsValid)
             return BadRequest();
 
-        Person? peopleIfExists = this.context.People
-            .FirstOrDefault(person => person.Name == login.Name || person.Email == login.Email);
+        Person? peopleIfExists = personRepository
+            .NewFirstOrDefault(person => 
+                person.Name == login.Name || 
+                person.Email == login.Email);
 
         if (peopleIfExists != null)
         {
@@ -80,25 +82,30 @@ public class PersonController : ControllerBase
         
         }
 
-
         login.Salt = PasswordConfig.GenerateStringSalt(12);
         login.Password = PasswordConfig.GetHash(login.Password, login.Salt);
 
-
-
-        this.context.People.Add(login);
-        this.context.SaveChanges();
+        personRepository.add(login);
         return Ok();
     }
 
     [HttpPost("userData")]
-    public string ReturnUserData(
+    public ActionResult<UserData> ReturnUserData(
         [FromBody]Jwt jwt,
+        [FromServices] IPersonRepository userRepository,
         [FromServices] IJwtService jwtService
     ){
         
-        string idUser = jwtService.Validate<string>(jwt.Value);
-        return idUser;
+        var idUser = jwtService.Validate<ReturnLoginData>(jwt.Value);
+
+        var user = userRepository.NewFirstOrDefault(user => user.Id == idUser.IdPerson);
+
+
+        return Ok( new UserData{
+            UserName = user.Name,
+            Email = user.Email,
+            Birthday = user.Birth
+        } );
     }
 }
 

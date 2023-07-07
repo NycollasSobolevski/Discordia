@@ -10,6 +10,14 @@ interface Jwt
     value?: string,
 }
 
+interface UserData
+{
+    userName : string,
+    email : string,
+    photo : string,
+    birthday : string
+}
 
 
-export { LoginData, Jwt }
+
+export { LoginData, Jwt, UserData }

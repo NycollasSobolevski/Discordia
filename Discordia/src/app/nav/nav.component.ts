@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Jwt } from '../services/person';
+import { Jwt, UserData } from '../services/person';
 import { Router } from '@angular/router';
+import { UserService } from '../services/person.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,18 +12,23 @@ export class NavComponent {
   private jwt : Jwt = {
     value : sessionStorage.getItem('jwt') ?? ""
   }
+  protected user : UserData | any = {
+    userName: '',
+    email: '',
+    photo: '',
+    birthday: ''
+  }
   protected isLogged = false
   protected viewConfig = false
 
-  constructor (private router : Router) {}
+  constructor (private router : Router, private service : UserService) {}
 
   ngOnInit() : void {
     if(this.jwt.value == "")
       this.isLogged = false
     else this.isLogged = true
+    this.getUserData()
   }
-
-
 
   switchOptions(){
     this.viewConfig = !this.viewConfig
@@ -33,5 +39,13 @@ export class NavComponent {
     localStorage.clear()
     this.router.navigate([""])
     window.location.reload()
+  }
+
+  getUserData () {
+    this.service.getUserData(this.jwt).subscribe({
+      next: (res) => {
+        this.user = res
+      }
+    })    
   }
 }

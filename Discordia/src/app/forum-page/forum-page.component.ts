@@ -21,9 +21,24 @@ export class ForumPageComponent {
     creator: ''
   };
 
-  constructor ( private route : ActivatedRoute, private router : Router, private service : ForumService) {  }
+  constructor ( 
+    private route : ActivatedRoute,
+    private router : Router, 
+    private service : ForumService
+  ) {  }
 
   ngOnInit () : void {
+    this.checkList();
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  cardModificado(){
+    this.checkList();
+  }
+  
+  checkList(){
     this.subscription = this.route.params.subscribe((params) => {
       let forumname = params['forum']
       this.service.GetForumPage(forumname).subscribe({
@@ -34,15 +49,7 @@ export class ForumPageComponent {
           this.router.navigate(['/404'])
         }
       },
-
       )
-      
     });
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  
-
 }

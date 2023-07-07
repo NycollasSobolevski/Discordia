@@ -32,7 +32,7 @@ public class ForumController : ControllerBase
         Person user = await this.context.People.FirstOrDefaultAsync(users => users.Id == id);
 
         if (user is null)
-            return Ok("User not found");
+            return BadRequest("User not found");
 
         var forums = await forumRepository.GetUserForums(user);
 
@@ -188,34 +188,28 @@ public class ForumController : ControllerBase
         [FromServices] IRepository<Position> positionRepository,
         [FromServices] IJwtService jwtService
     ){
-        try
-        {
-            var user = jwtService.Validate<ReturnLoginData>(body.CreatorIdJwt);
-            int idUser = user.IdPerson;
+        var user = jwtService.Validate<ReturnLoginData>(body.CreatorIdJwt);
+        int idUser = user.IdPerson;
 
-            var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
+        var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
 
-            var sub = await subsRepository.Filter(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
-            if (sub != null)
-                return BadRequest("This user already follows this forum");
-            var position = await positionRepository
-                .FirstOrDefault(position =>
-                    position.IdForum == forum.Id && 
-                    position.Name == "User");
+        var sub = await subsRepository.FirstOrDefault(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
+        System.Console.WriteLine(sub);
+        if (sub != null)
+            return BadRequest("This user already follows this forum");
+        var position = await positionRepository
+            .FirstOrDefault(position =>
+                position.IdForum == forum.Id && 
+                position.Name == "User");
 
-            await subsRepository.add(new Subscribed{
-                IdPerson = idUser,
-                IdForum = forum.Id,
-                IdPosition = position.Id,
-            });
+        await subsRepository.add(new Subscribed{
+            IdPerson = idUser,
+            IdForum = forum.Id,
+            IdPosition = position.Id,
+        });
 
-            return Ok("successful registration!");
-        }
-        catch (System.Exception)
-        {
-            
-            return BadRequest();
-        }
+        return Ok("successful registration!");
+
     }
 
     [HttpPost("UnfollowForum")]
