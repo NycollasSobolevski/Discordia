@@ -7,3 +7,10 @@ public record PostData
     public bool? Attachment { get; set; }
     public DateTime? Created { get; set; }
 }
+
+public record GetPostData 
+{
+    public string Jwt { get; set; }
+    public int Page { get; set; }
+    public int Quantity { get; set; }
+}

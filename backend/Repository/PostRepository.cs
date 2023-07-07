@@ -5,7 +5,14 @@ namespace backend;
 
 using Model;
 
-public class PostRepository : IRepository<Post>
+
+public interface IPostRepository : IRepository<Post>
+{
+    public Task<List<Post>> GetUserForumFollowedPosts (Person user, int quantity, int page);
+}
+
+
+public class PostRepository : IPostRepository
 {
     private DiscordiaContext entity;
 
@@ -60,4 +67,26 @@ public class PostRepository : IRepository<Post>
         entity.Update(obj);
         entity.SaveChanges();
     }
+
+    public async Task<List<Post>> GetUserForumFollowedPosts (Person user,  int page, int quantity)
+    {
+        var query = 
+            from s in entity.Subscribeds
+            where s.IdPerson == user.Id
+            join f in entity.Forums
+            on s.IdForum equals f.Id
+            join p in entity.Posts
+            on f.Id equals p.IdForum
+            select p;
+        
+        var posts = await query
+            .Skip(quantity * page)
+            .Take(quantity)
+            .ToListAsync();
+        
+        Console.WriteLine(posts.Count);
+
+        return posts;
+    }
+
 }

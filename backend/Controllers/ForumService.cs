@@ -80,7 +80,7 @@ public class ForumController : ControllerBase
         [FromServices]IForumRepository forum,
         [FromServices]IPersonRepository personRepository,
         [FromServices]ISubscribedRepository subsRepository,
-        [FromServices]IRepository<Post> postRepository
+        [FromServices]IPostRepository postRepository
         )
     {
         var forums = await forum.Filter(x => true);

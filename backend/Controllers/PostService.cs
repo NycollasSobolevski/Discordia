@@ -6,6 +6,7 @@ namespace backend.Controllers;
 
 using backend.Model;
 using backend.Data;
+using System.Collections.Generic;
 
 [ApiController]
 [Route("post")]
@@ -58,5 +59,30 @@ public class PostController : ControllerBase
         await postRepository.add(newPost);
 
         return Ok("Successful Post Creation");
+    }
+
+    [HttpPost("GetUserPosts")]
+    public async Task<ActionResult<IEnumerable<PostData>>> GetUserPostAsync (
+        [FromBody] GetPostData data,
+        [FromServices] IPersonRepository personRepository,
+        [FromServices] IPostRepository postRepository,
+        [FromServices] IJwtService jwtService
+    )
+    {
+
+        var result = jwtService.Validate<ReturnLoginData>(data.Jwt);
+        int Id = result.IdPerson;
+        var user = personRepository.NewFirstOrDefault(person => person.Id == Id);
+
+        var posts = await postRepository
+            .GetUserForumFollowedPosts(user, 1, 10);
+        
+        var dtoPosts = posts.Select(p => new PostData
+        {
+            Content = "banana"
+
+        });
+
+        return Ok(dtoPosts);
     }
 }

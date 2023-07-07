@@ -29,7 +29,7 @@ builder.Services.AddTransient<IPersonRepository, PersonRepository>();
 builder.Services.AddTransient<IForumRepository, ForumRepository>();
 builder.Services.AddTransient<IRepository<Position>, PositionRepository>();
 builder.Services.AddTransient<ISubscribedRepository, SubscribedRepository>();
-builder.Services.AddTransient<IRepository<Post>, PostRepository>();
+builder.Services.AddTransient<IPostRepository, PostRepository>();
 
 builder.Services.AddScoped<DiscordiaContext>();
 //TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
