@@ -51,10 +51,11 @@ export class ForumCardComponent {
     this.service.FollowForum( forum ).subscribe({
       next : (res) => {
         console.log(res);
-        
+        this.followClicked.emit();
+        this.checkIfFollow(this.followedList)
+        location.reload()
       }
     })
-    this.followClicked.emit();
   }
 
   unfollow(){
@@ -66,10 +67,11 @@ export class ForumCardComponent {
     this.service.UnfollowForum( forum ).subscribe({
       next : (res) => {
         console.log(res);
-        
+        this.followClicked.emit();
+        this.checkIfFollow(this.followedList)
+        location.reload()
       }
     })
-    this.followClicked.emit();
   }
 
   func(){

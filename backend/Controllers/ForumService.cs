@@ -194,20 +194,22 @@ public class ForumController : ControllerBase
         var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
 
         var sub = await subsRepository.FirstOrDefault(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
-        System.Console.WriteLine(sub);
-        if (sub != null)
+        if (sub is not null)
             return BadRequest("This user already follows this forum");
+        
+        
         var position = await positionRepository
             .FirstOrDefault(position =>
                 position.IdForum == forum.Id && 
                 position.Name == "User");
 
-        await subsRepository.add(new Subscribed{
-            IdPerson = idUser,
-            IdForum = forum.Id,
-            IdPosition = position.Id,
-        });
+        // await subsRepository.add(new Subscribed{
+        //     IdPerson = idUser,
+        //     IdForum = forum.Id,
+        //     IdPosition = position.Id,
+        // });
 
+        System.Console.WriteLine("chegou aqui");
         return Ok("successful registration!");
 
     }
@@ -221,20 +223,17 @@ public class ForumController : ControllerBase
         [FromServices] IJwtService jwtService        
     )
     {
-        try{
-            var user = jwtService.Validate<ReturnLoginData>(body.CreatorIdJwt);
-            int idUser = user.IdPerson;
+    
+        var user = jwtService.Validate<ReturnLoginData>(body.CreatorIdJwt);
+        int idUser = user.IdPerson;
 
-            var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
+        var forum = await forumRepository.FirstOrDefault( forum => forum.Title == body.Title);
 
-            var sub = await subsRepository.FirstOrDefault(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
+        var sub = await subsRepository.FirstOrDefault(sub => sub.IdPerson == idUser && sub.IdForum == forum.Id);
 
-            subsRepository.Delete(sub);
-            return Ok();
-        }
-        catch{
-            return BadRequest("Error");
-        }
+        subsRepository.Delete(sub);
+        return Ok();
+
     }
 }
 
