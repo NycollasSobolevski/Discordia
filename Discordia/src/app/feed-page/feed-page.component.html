@@ -2,11 +2,7 @@
 <div id="main">
 
     <div class="feed">
-        <app-feed-card></app-feed-card>
-        <app-feed-card></app-feed-card>
-        <app-feed-card></app-feed-card>
-        <app-feed-card></app-feed-card>
-        <app-new-post></app-new-post>
+        <app-feed-card *ngFor="let post of postList" [obj]="post"></app-feed-card>
     </div>
     <app-menu></app-menu>
 

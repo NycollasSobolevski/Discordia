@@ -147,7 +147,7 @@ public class ForumController : ControllerBase
         string name,
         [FromServices]IForumRepository forumRepository,
         [FromServices]IPersonRepository personRepository,
-        [FromServices]IRepository<Post> postRepository
+        [FromServices]IPostRepository postRepository
         )
     {
         Forum forum  = await forumRepository.FirstOrDefault(forum => forum.Title == name);
@@ -203,13 +203,12 @@ public class ForumController : ControllerBase
                 position.IdForum == forum.Id && 
                 position.Name == "User");
 
-        // await subsRepository.add(new Subscribed{
-        //     IdPerson = idUser,
-        //     IdForum = forum.Id,
-        //     IdPosition = position.Id,
-        // });
+        await subsRepository.add(new Subscribed{
+            IdPerson = idUser,
+            IdForum = forum.Id,
+            IdPosition = position.Id,
+        });
 
-        System.Console.WriteLine("chegou aqui");
         return Ok("successful registration!");
 
     }

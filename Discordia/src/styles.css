@@ -20,7 +20,15 @@
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #0D0D0D; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color:hsla(278,100%,14%,1);
+    background-image:
+    radial-gradient(at 97% 4%, hsla(264,95%,37%,1) 0px, transparent 50%),
+    radial-gradient(at 16% 54%, hsla(240,44%,79%,1) 0px, transparent 50%),
+    radial-gradient(at 55% 55%, hsla(283,99%,42%,1) 0px, transparent 50%),
+    radial-gradient(at 6% 79%, hsla(180,95%,38%,0.8) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(242,100%,70%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(262,92%,74%,1) 0px, transparent 50%);}
 button{ background-color: transparent; border-style: none; }
 button:hover{ cursor: pointer; }
 a{text-decoration: none;}

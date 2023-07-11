@@ -1,4 +1,5 @@
-import { Post, PostCard } from "./Model"
+import { Post } from "./Model"
+import { PostCard } from "./Post"
 import { Jwt } from "./person"
 
 interface ForumToBack{

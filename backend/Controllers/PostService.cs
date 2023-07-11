@@ -66,6 +66,7 @@ public class PostController : ControllerBase
         [FromBody] GetPostData data,
         [FromServices] IPersonRepository personRepository,
         [FromServices] IPostRepository postRepository,
+        [FromServices] IForumRepository forumRepository,
         [FromServices] IJwtService jwtService
     )
     {
@@ -75,12 +76,19 @@ public class PostController : ControllerBase
         var user = personRepository.NewFirstOrDefault(person => person.Id == Id);
 
         var posts = await postRepository
-            .GetUserForumFollowedPosts(user, 1, 10);
+            .GetUserForumFollowedPosts(
+                user,
+                data.Quantity > 0 ? data.Quantity : 10, 
+                data.Page
+            );
         
-        var dtoPosts = posts.Select(p => new PostData
+        IEnumerable<PostData> dtoPosts = posts.Select(p => new PostData
         {
-            Content = "banana"
-
+            CreatorIdJwt = personRepository.NewFirstOrDefault( person => person.Id == p.IdCreator).Name,
+            Content = p.Content,
+            Title = p.Title,
+            ForumTitle = forumRepository.NewFirstOrDefault(f => f.Id == p.IdForum).Title,
+            Created = p.CreatedAt
         });
 
         return Ok(dtoPosts);

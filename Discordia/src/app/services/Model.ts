@@ -26,13 +26,4 @@ interface Post {
     created : Date
 }
 
-interface PostCard {
-    creatorIdJwt : string
-    forumTitle : string
-    title : string
-    content : string
-    attachment : boolean
-    created : Date
-}
-
-export { Forum, Person, Post, PostCard }
+export { Forum, Person, Post }

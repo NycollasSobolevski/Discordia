@@ -3,6 +3,7 @@ import { ForumService } from '../services/forum.service';
 import { ForumToBack } from '../services/Forum';
 import { Router } from '@angular/router';
 import { Forum } from '../services/Model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-forum-card',
@@ -54,7 +55,10 @@ export class ForumCardComponent {
         this.followClicked.emit();
         this.checkIfFollow(this.followedList)
         location.reload()
-      }
+      },
+      error: (err: HttpErrorResponse) => {
+        location.reload()
+      }      
     })
   }
 

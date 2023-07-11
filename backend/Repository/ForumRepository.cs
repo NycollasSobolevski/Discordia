@@ -8,6 +8,7 @@ using Model;
 public interface IForumRepository : IRepository<Forum>
 {
     Task<List<Forum>> GetUserForums(Person person);
+    public Forum NewFirstOrDefault(Expression<Func<Forum, bool>> exp);
     Task<int> addAsync( Forum obj );
 }
 
@@ -30,7 +31,8 @@ public class ForumRepository : IForumRepository
         return await entity.Forums.Where(exp).ToListAsync();
     }
     public async Task<Forum> FirstOrDefault(Expression<Func<Forum, bool>> exp)
-        => await entity.Forums.FirstOrDefaultAsync(exp);
+        => await entity.Forums
+            .FirstOrDefaultAsync(exp);
 
 
     public async Task<List<Forum>> GetUserForums(Person user)
@@ -132,4 +134,7 @@ public class ForumRepository : IForumRepository
         throw new NotImplementedException();
     }
 
+    public Forum NewFirstOrDefault(Expression<Func<Forum, bool>> exp)
+        => entity.Forums
+            .FirstOrDefault(exp);
 }

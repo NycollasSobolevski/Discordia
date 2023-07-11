@@ -26,8 +26,11 @@ export class NavComponent {
   ngOnInit() : void {
     if(this.jwt.value == "")
       this.isLogged = false
-    else this.isLogged = true
-    this.getUserData()
+    else 
+    {
+      this.isLogged = true
+      this.getUserData()
+    }
   }
 
   switchOptions(){

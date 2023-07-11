@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild, ViewRef } from '@angular/core';
-import { Post, PostCard } from '../services/Model';
+import { Post } from '../services/Model';
+import { PostCard } from '../services/Post';
 
 @Component({
   selector: 'app-feed-card',
@@ -19,6 +20,9 @@ export class FeedCardComponent {
     created : new Date
   };
 
+  protected liked = false;
+  protected unliked = false;
+
   ngOnInit() {
     this.post = this.obj
     this.post.created = new Date(this.obj.created)
@@ -28,4 +32,15 @@ export class FeedCardComponent {
   protected mostConfig(){
     this.viewConfig =  !this.viewConfig;
   }
+
+  like(){
+    this.unliked = false
+    this.liked = !this.liked
+  }
+  unlike(){
+    this.unliked = !this.unliked
+    this.liked = false
+
+  }
+
 }

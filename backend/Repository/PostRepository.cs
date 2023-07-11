@@ -68,7 +68,7 @@ public class PostRepository : IPostRepository
         entity.SaveChanges();
     }
 
-    public async Task<List<Post>> GetUserForumFollowedPosts (Person user,  int page, int quantity)
+    public async Task<List<Post>> GetUserForumFollowedPosts (Person user,  int quantity, int page)
     {
         var query = 
             from s in entity.Subscribeds
