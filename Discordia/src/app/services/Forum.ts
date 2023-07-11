@@ -16,4 +16,9 @@ interface ForumWithPosts{
     posts : PostCard[]
 }
 
-export { ForumToBack, ForumWithPosts }
+interface getPermissions{
+    jwt : string
+    forumName : string
+}
+
+export { ForumToBack, ForumWithPosts, getPermissions }

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Forum } from '../services/Model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-component',
@@ -9,7 +10,7 @@ import { Forum } from '../services/Model';
 export class MenuComponentComponent {
   @Input() obj : any;
 
-  constructor ( ) { } 
+  constructor ( private router : Router ) { } 
 
   protected title : string = ""
   protected creator : string = ""
@@ -17,6 +18,10 @@ export class MenuComponentComponent {
   ngOnInit(){
     this.title = this.obj.title;
     this.creator = this.obj.creator
+  }
+
+  goToForumPage(){
+    this.router.navigate(['forum/'+ this.obj.title])
   }
   
 }

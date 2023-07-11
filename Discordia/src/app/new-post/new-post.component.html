@@ -11,10 +11,11 @@
     <div class="content">
         <h3 >New Post</h3>
         <span>
-            <select class="input" name="selectForum" id="selectForum" (change)="getSelectValue($event)">
+            <h5>{{forumName}}</h5>
+            <!-- <select class="input" name="selectForum" id="selectForum" (change)="getSelectValue($event)">
                 <option value="null" disabled selected>Select Forum</option>
                 <option *ngFor="let forum of this.avaliableForums" [ngValue]="forum.title">{{ forum.title }}</option>
-            </select>
+            </select> -->
         </span>
         <span>
             <input class="input" type="text"  placeholder="Title" id="Title" maxlength="50" (ngModelChange)="updateTitle($event)" [(ngModel)]="post.title" >

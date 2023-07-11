@@ -93,7 +93,7 @@ public class ForumController : ControllerBase
                 Description = f.Description,
                 Title = f.Title,
                 Created = f.Created,
-                //TODO:  
+                // TODO:  
                 // followers = subsRepository.Count(subs => subs.IdForum == f.Id),
                 // posts = postRepository.Count(post => post.IdForum == f.Id) ,
             };
@@ -168,7 +168,7 @@ public class ForumController : ControllerBase
             });
         }
         if (forum == null)
-            return BadRequest("Forum not exists");
+            return NotFound("Forum not exists");
 
         return Ok(new ForumWithPosts{
             Creator = personRepository.NewFirstOrDefault(person => person.Id == forum.CreatorId).Name,
@@ -235,4 +235,3 @@ public class ForumController : ControllerBase
 
     }
 }
-

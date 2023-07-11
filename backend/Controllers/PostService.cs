@@ -24,13 +24,15 @@ public class PostController : ControllerBase
         var userjwt = jwtService.Validate<ReturnLoginData>(body.jwt);
         int idUser = userjwt.IdPerson;
 
-        return Ok(postRepository.VerifyPermission( idUser, body.ForumName ));
+        var result = postRepository.VerifyPermission( idUser, body.ForumName );
+
+        return Ok(result);
     }
 
     [HttpPost("createPost")]
     public async Task<ActionResult> Post(
         [FromBody] PostData post,
-        [FromServices] IRepository<Post> postRepository,
+        [FromServices] IPostRepository postRepository,
         [FromServices] IForumRepository forumRepository,
         [FromServices] IJwtService jwtService,
         [FromServices] ISubscribedRepository subsRepository

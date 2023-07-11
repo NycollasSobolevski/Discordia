@@ -56,8 +56,7 @@ export class AllForumsPageComponent {
         item.forEach((element : any )=> {
           list.push(element);
         });
-        this.allForums = list;
-        
+        this.allForums = list;  
     })
   }
   getForumsFollowed (){

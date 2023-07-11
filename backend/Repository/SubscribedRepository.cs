@@ -7,7 +7,7 @@ using Model;
 
 public interface ISubscribedRepository : IRepository<Subscribed>
 {
-    Task<IEnumerable<Func>> VerifyPermission(int IdPerson, string ForumName);
+    Task<List<Func>> VerifyPermission(int IdPerson, string ForumName);
 }
 
 public class SubscribedRepository : ISubscribedRepository
@@ -60,7 +60,7 @@ public class SubscribedRepository : ISubscribedRepository
         entity.SaveChanges();
     }
 
-    public async Task<IEnumerable<Func>> VerifyPermission( int IdPerson, string ForumName )
+    public async Task<List<Func>> VerifyPermission( int IdPerson, string ForumName )
     {
         var forum = entity.Forums
             .FirstOrDefault(x => x.Title == ForumName);

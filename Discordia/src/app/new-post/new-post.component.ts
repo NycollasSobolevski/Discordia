@@ -1,10 +1,11 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 
-import { ForumToBack } from '../services/Forum'
+import { ForumToBack, getPermissions } from '../services/Forum'
 import { Jwt } from '../services/person';
 import { Forum, Post } from '../services/Model';
 import { ForumService } from '../services/forum.service';
 import { PostService } from '../services/post.service';
+import { func } from '../services/Permissions';
 
 @Component({
   selector: 'app-new-post',
@@ -12,13 +13,20 @@ import { PostService } from '../services/post.service';
   styleUrls: ['./new-post.component.css']
 })
 export class NewPostComponent {
+  @Input() forumName : string = '' 
+
+  newPost = false;
 
   constructor (
     private forumService : ForumService,
     private postService : PostService
-    ){}
+    ) {  }  
   
-  
+    pageData : getPermissions = {
+      jwt: sessionStorage.getItem('jwt') ?? '',
+      forumName: this.forumName
+    }
+
   private jwt : Jwt = {
     value : sessionStorage.getItem('jwt') ?? ""
   }  
@@ -41,22 +49,36 @@ export class NewPostComponent {
   ngOnInit(){
     if(this.jwt.value == "")
       return
+    }
     
-    this.getAvaliableForums();
+  ngOnChanges(){
+    this.post.forumTitle = this.forumName
+    // this.verifyIfPost()
   }
 
+  //// getAvaliableForums(){
+  ////   return this.forumService
+  ////     .GetUserForums(this.jwt)
+  ////     .subscribe( item => {
+  ////       let list: Forum[] = []
+  ////       item.forEach(forums => {
+  ////         list.push(forums)
+  ////       })
+  ////       this.avaliableForums = list;
+  ////     })
+  //// }
 
 
-  getAvaliableForums(){
-    return this.forumService
-      .GetUserForums(this.jwt)
-      .subscribe( item => {
-        let list: Forum[] = []
-        item.forEach(forums => {
-          list.push(forums)
-        })
-        this.avaliableForums = list;
-      })
+
+  verifyIfPost(){
+    this.postService.getPermissions(this.pageData).subscribe({
+      next : (item) => {
+        item.forEach((element : func) => {
+          if (element.name == 'Post')
+            this.newPost = true
+        });
+      }
+    })
   }
 
   getSelectValue( event : any ) {
@@ -87,8 +109,6 @@ export class NewPostComponent {
 
       return
     }
-
-    
     
     this.postService.CreatePost(this.post)
       .subscribe({
@@ -97,7 +117,9 @@ export class NewPostComponent {
         },
         error: (err) => {
           console.log(err);
-          
+        },
+        complete: () => {
+          location.reload()
         }
       })
   }

@@ -16,4 +16,6 @@
     <div class="posts">
         <app-feed-card *ngFor="let post of forum.posts" [obj]="post" (followClicked)="cardModificado()"></app-feed-card>
     </div>
+
+    <app-new-post forumName="{{forum.title}}"></app-new-post>
 </div>
